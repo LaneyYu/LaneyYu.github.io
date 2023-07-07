@@ -25,6 +25,44 @@ pygmentsCodefencesGuessSyntax = true
 # Localized dates requires Hugo version 0.87.0
 localizedDates = false
 
+[params]
+title = "I'm Laney"
+author = "LaneyYu"
+description = """
+a freshman
+---
+"""
+profilePicture = "images/profile.jpeg"
+
+
+
+[[params.socialIcons]]
+icon = "fas fa-envelope"
+title = "e-mail"
+url = "534013339@qq.com"
+
+
+[menu]
+
+  [[menu.main]]
+  name = "Home"
+  identifier = "home"
+  weight = 100
+  url = "/"
+
+  [[menu.main]]
+  name = "Posts"
+  weight = 200
+  identifier = "posts"
+  url = "/post/"
+
+  [[menu.main]]
+  name = "About"
+  weight = 300
+  identifier = "about"
+  url = "/about/"
+
+
 [markup]
     [markup.goldmark]
         [markup.goldmark.renderer]

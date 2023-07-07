@@ -2,9 +2,9 @@
 title: "《So you want to work in security?》"
 date: 2023-07-07T23:01:48+08:00
 Description: ""
-Tags: []
-Categories: []
-DisableComments: false
+Tags: [心得]
+Categories: [阅读]
+DisableComments: true
 ---
 
 阅读《So you want to work in security? (and for some reason ended up here rather than reading other people’s posts on the topic)》
