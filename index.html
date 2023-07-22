@@ -42,19 +42,21 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="" class="js-avatar">
+			<img src="/assets/img/touxiang.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/"></a></h1>
 		</hgroup>
 		
+		<p class="header-subtitle">盲人摸象</p>
+		
 
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/">主页</a></li>
+				<li><a href="/">home</a></li>
 	        
-				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+				<li><a href="/posts">posts</a></li>
 	        
 			</ul>
 		</nav>
@@ -62,10 +64,6 @@
     		
     			
     			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
-    			
-            
-    			
-    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
     			
             
     			
@@ -78,11 +76,7 @@
 				
 					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+					<a class="mail" target="_blank" href="/534013339@qq.com" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
 		</nav>
@@ -100,11 +94,13 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="" class="js-avatar">
+				<img src="/assets/img/touxiang.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
+			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>盲人摸象<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -119,11 +115,7 @@
 					
 						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+						<a class="mail" target="_blank" href="/534013339@qq.com" title="mail"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
@@ -132,9 +124,9 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 50%"><a href="/">home</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 50%"><a href="/posts">posts</a></li>
 		        
 				</ul>
 			</nav>
@@ -167,47 +159,47 @@
   	<time datetime="2023-07-21T15:51:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-21</time>
 </a>
         
+
+         <!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  字数统计:</span>
+        <!--这里样式可以自己定制-->
+        <span class="post-count" style="font-size: 14px;color: grey">718字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  阅读时长:</span>
+        <span class="post-count" style="font-size: 14px;color: grey">3分钟</span>
+      </span>
+    </span>
+</div>
+
+          
+        <!-- 添加完成 -->
+
+  
+
+        
+        
+
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>Fuzzing101 Execise2</strong></p>
-<p>CVE-2009-3895 （heap-based buffer overflow）and CVE-2012-2836 （Out-of-bounds Read）in libexif 0.6.14</p>
-<h1 id="安装调试目标"><a href="#安装调试目标" class="headerlink" title="安装调试目标"></a>安装调试目标</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/libexif/libexif/archive/refs/tags/libexif-0_6_14-release.tar.gz</span><br><span class="line">tar -xzvf libexif-0_6_14-release.tar.gz</span><br></pre></td></tr></table></figure>
-<p>安装依赖</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install</span><br></pre></td></tr></table></figure>
-<p>配置iconfigure并安装</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd libexif-0_6_14-release</span><br><span class="line">sudo apt-get install autopoint libtool gettext libpopt-dev</span><br><span class="line">autoreconf -fvi    //用于适配系统环境，简化config命令</span><br><span class="line">./configure --enable-shared=no (如果是库文件，必须编译成静态库) --prefix=&quot;$HOME/fuzzing101/libexif/install/&quot;</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-<p>由于libexif是一个库，我们需要另一个应用程序来使用这个库，这个应用程序将被模糊测试。对于这个任务，我们将使用exif命令行。输入以下命令下载并解压缩exif命令行0.6.15</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/libexif/exif/archive/refs/tags/exif-0_6_15-release.tar.gz</span><br><span class="line">tar -xzvf exif-0_6_15-release.tar.gz</span><br></pre></td></tr></table></figure>
-<p>现在，我们可以构建并安装exif命令行实用程序:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd exif-exif-0_6_15-release/</span><br><span class="line">autoreconf -fvi</span><br><span class="line">./configure --enable-shared=no --prefix=&quot;$HOME/fuzzing101/libexif/install/&quot; PKG_CONFIG_PATH=$HOME/fuzzing101/libexif/install/lib/pkgconfig</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-<p>测试是否正常工作</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$HOME/fuzzing101/libexif/install/bin/exif</span><br></pre></td></tr></table></figure>
-<p><img src="/../img/fuzzing101_execise2_1.png"></p>
-<h1 id="创建种子语料库"><a href="#创建种子语料库" class="headerlink" title="创建种子语料库"></a>创建种子语料库</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/ianare/exif-samples/archive/refs/heads/master.zip</span><br><span class="line">unzip master.zip</span><br></pre></td></tr></table></figure>
-<p>可以执行一个例子</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$HOME/fuzzing101/libexif/install/bin/exif $HOME/fuzzing101/exif-samples-master/jpg/Canon_40D_photoshop_import.jpg</span><br></pre></td></tr></table></figure>
-<p>结果如下：<br><img src="/../img/fuzzing101_execise2_2.png"></p>
-<h1 id="Afl-clang-lto-instrumentation"><a href="#Afl-clang-lto-instrumentation" class="headerlink" title="Afl-clang-lto instrumentation"></a>Afl-clang-lto instrumentation</h1><p>使用afl-clang-lto作为编译器构建libxif。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">rm -r $HOME/fuzzing101/libexif/install</span><br><span class="line">cd $HOME/fuzzing101/libexif-libexif-0_6_14-release/</span><br><span class="line">make clean</span><br><span class="line">export LLVM_CONFIG=&quot;llvm-config-11&quot;</span><br><span class="line">CC=afl-clang-lto ./configure --enable-shared=no --prefix=&quot;$HOME/fuzzing101/libexif/install/&quot;</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd $HOME/fuzzing101/exif-exif-0_6_15-release</span><br><span class="line">make clean</span><br><span class="line">export LLVM_CONFIG=&quot;llvm-config-11&quot;</span><br><span class="line">CC=afl-clang-lto ./configure --enable-shared=no --prefix=&quot;$HOME/fuzzing101/libexif/install/&quot; PKG_CONFIG_PATH=$HOME/fuzzing101/libexif/install/lib/pkgconfig</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-<p>使用了afl-clang-lto而不是afl-clang-fast。一般来说，afl-clang-lto是最好的选择，因为它是一种无碰撞的工具，而且比afl-clang-fast更快。</p>
-<p>如果不确定何时使用afl-clang-lto或afl-clang-fast，可以检查从AFLplusplus提取的下图,检测该目标</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">+--------------------------------+</span><br><span class="line">| clang/clang++ 11+ is available | --&gt; use LTO mode (afl-clang-lto/afl-clang-lto++)</span><br><span class="line">+--------------------------------+     see [instrumentation/README.lto.md](instrumentation/README.lto.md)</span><br><span class="line">    |</span><br><span class="line">    | if not, or if the target fails with LTO afl-clang-lto/++</span><br><span class="line">    |</span><br><span class="line">    v</span><br><span class="line">+---------------------------------+</span><br><span class="line">| clang/clang++ 6.0+ is available | --&gt; use LLVM mode (afl-clang-fast/afl-clang-fast++)</span><br><span class="line">+---------------------------------+     see [instrumentation/README.llvm.md](instrumentation/README.llvm.md)</span><br><span class="line">    |</span><br><span class="line">    | if not, or if the target fails with LLVM afl-clang-fast/++</span><br><span class="line">    |</span><br><span class="line">    v</span><br><span class="line"> +--------------------------------+</span><br><span class="line"> | gcc 5+ is available            | -&gt; use GCC_PLUGIN mode (afl-gcc-fast/afl-g++-fast)</span><br><span class="line"> +--------------------------------+    see [instrumentation/README.gcc_plugin.md](instrumentation/README.gcc_plugin.md) and</span><br><span class="line">                                       [instrumentation/README.instrument_list.md](instrumentation/README.instrument_list.md)</span><br><span class="line">    |</span><br><span class="line">    | if not, or if you do not have a gcc with plugin support</span><br><span class="line">    |</span><br><span class="line">    v</span><br><span class="line">   use GCC mode (afl-gcc/afl-g++) (or afl-clang/afl-clang++ for clang)</span><br></pre></td></tr></table></figure>
-<h1 id="模糊测试"><a href="#模糊测试" class="headerlink" title="模糊测试"></a>模糊测试</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">afl-fuzz -i $HOME/fuzzing101/exif-samples-master/jpg/ -o $HOME/fuzzing101/libexif/out/ -s 123 -- $HOME/fuzzing101/libexif/install/bin/exif @@</span><br></pre></td></tr></table></figure>
-<p><img src="/../img/fuzzing101_execise2_3.png"></p>
-<h1 id="动态调试"><a href="#动态调试" class="headerlink" title="动态调试"></a>动态调试</h1><p>发现以下crash</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gdb --args ./install/bin/exif ./out/default/crashes/id\:000000\,sig\:11\,src\:000160\,time\:80781\,execs\:21877\,op\:havoc\,rep\:5 ./output</span><br></pre></td></tr></table></figure>
-<p><img src="/../img/fuzzing101_execise2_4.png"></p>
-<pre><code>报错信息Program received signal SIGSEGV, Segmentation fault.，存在内存泄露
-报错位置__memmove_avx_unaligned_erms () at ../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:440
-</code></pre>
-<p><img src="/../img/fuzzing101_execise2_5.png"><br><img src="/../img/fuzzing101_execise2_6.png"></p>
-<h1 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h1><pre><code>https://github.com/libexif/libexif/commit/8ce72b7f81e61ef69b7ad5bdfeff1516c90fa361
-https://github.com/libexif/libexif/commit/00986f6fa979fe810b46e376a462c581f9746e06
-</code></pre>
-
+<p>CVE-2009-3895 （heap-based buffer overflow）and CVE-2012-2836 （Out-of-bounds Read）in libexif 0.6.14<br>
+        
+          <a class="article-more-a" href="/2023/07/21/Fuzzing101-Execise2/#more">more >></a>
+        
       
 
       
@@ -232,148 +224,6 @@ https://github.com/libexif/libexif/commit/00986f6fa979fe810b46e376a462c581f9746e
 
       
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/07/21/Fuzzing101-Execise2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="my-blog" class="article article-type-my  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/07/19/blog/">blog</a>
-    </h1>
-  
-
-        
-        <a href="/2023/07/19/blog/" class="archive-article-date">
-  	<time datetime="2023-07-19T02:57:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>test</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/07/19/blog/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/07/19/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2023/07/19/hello-world/" class="archive-article-date">
-  	<time datetime="2023-07-19T02:45:28.663Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/07/19/hello-world/">展开全文 >></a>
-        </p>
       
 
       
@@ -418,100 +268,47 @@ https://github.com/libexif/libexif/commit/00986f6fa979fe810b46e376a462c581f9746e
   	<time datetime="2023-07-17T19:47:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-18</time>
 </a>
         
+
+         <!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  字数统计:</span>
+        <!--这里样式可以自己定制-->
+        <span class="post-count" style="font-size: 14px;color: grey">1.1k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  阅读时长:</span>
+        <span class="post-count" style="font-size: 14px;color: grey">5分钟</span>
+      </span>
+    </span>
+</div>
+
+          
+        <!-- 添加完成 -->
+
+  
+
+        
+        
+
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>Fuzzing101 Execise1</strong></p>
-<p>CVE-2019-13288 in XPDF 3.02 （infinite recursion）无限递归</p>
-<p>CVE-2019-13288 ：是一个漏洞，它可能会通过精心制作的文件导致无限递归。由于程序中每个被调用的函数都会在栈上分配一个栈帧，如果一个函数被递归调用这么多次，就会导致栈内存耗尽和程序崩溃。因此，远程攻击者可以利用它进行 DoS 攻击。</p>
-<p><strong>目的：</strong></p>
-<ul>
-<li><p>使用检测编译目标应用程序</p>
-</li>
-<li><p>运行模糊器（afl-fuzz）</p>
-</li>
-<li><p>使用调试器 (GDB) 对崩溃进行分类</p>
-</li>
-<li><p>在 XPDF 3.02 中找到 CVE-2019-13288 的崩溃&#x2F;PoC。</p>
-</li>
-</ul>
-<h3 id="1-环境依赖"><a href="#1-环境依赖" class="headerlink" title="1. 环境依赖"></a>1. 环境依赖</h3><p>系统：Ubuntu 20.04.2 LTS（用22的会有比较多问题）</p>
-<p>安装make，gcc</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install build-essential</span><br></pre></td></tr></table></figure>
-
-<p>安装AFL++</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//安装依赖项</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install -y build-essential python3-dev automake git flex bison libglib2.0-dev libpixman-1-dev python3-setuptools</span><br><span class="line">sudo apt-get install -y lld-11 llvm-11 llvm-11-dev clang-11 || sudo apt-get install -y lld llvm llvm-dev clang </span><br><span class="line">sudo apt-get install -y gcc-$(gcc --version|head -n1|sed &#x27;s/.* //&#x27;|sed &#x27;s/\..*//&#x27;)-plugin-dev libstdc++-$(gcc --version|head -n1|sed &#x27;s/.* //&#x27;|sed &#x27;s/\..*//&#x27;)-dev</span><br><span class="line"></span><br><span class="line">//构建AFL++</span><br><span class="line">git clone https://github.com/AFLplusplus/AFLplusplus &amp;&amp; cd AFLplusplus</span><br><span class="line">export LLVM_CONFIG=&quot;llvm-config-11&quot;</span><br><span class="line">make distrib</span><br><span class="line">sudo make install</span><br><span class="line"></span><br><span class="line">//执行afl-fuzz，查看是否安装成功</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="2-实验流程"><a href="#2-实验流程" class="headerlink" title="2. 实验流程"></a>2. 实验流程</h3><p>首先为要进行模糊测试的项目创建一个新目录：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd $HOME</span><br><span class="line">mkdir fuzzing_xpdf &amp;&amp; cd fuzzing_xpdf/</span><br></pre></td></tr></table></figure>
-
-<p>下载 Xpdf 3.02：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://dl.xpdfreader.com/old/xpdf-3.02.tar.gz</span><br><span class="line">tar -xvzf xpdf-3.02.tar.gz</span><br></pre></td></tr></table></figure>
-
-<p>构建 Xpdf：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd xpdf-3.02</span><br><span class="line">sudo apt update &amp;&amp; sudo apt install -y build-essential gcc</span><br><span class="line">./configure --prefix=&quot;$HOME/fuzzing_xpdf/install/&quot;</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-
-<p>配置configure时有各种环境变量需要设置，比较常用的有</p>
-<pre><code>AS：汇编程序名称
-CC：C编译器名称
-CXX：C++编译器名称
-CPP：C预编译器名称
-**FLAGS：**为不同编译器名称，表示对应编译器的参数
-LD：链接器名称
-AR：归档器archiver名称
-RANLIB：符号表添加器名称
-</code></pre>
-<p>获取样本：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd $HOME/fuzzing_xpdf</span><br><span class="line">mkdir pdf_examples &amp;&amp; cd pdf_examples</span><br><span class="line">wget https://github.com/mozilla/pdf.js-sample-files/raw/master/helloworld.pdf</span><br><span class="line">wget http://www.africau.edu/images/default/sample.pdf</span><br><span class="line">wget https://www.melbpc.org.au/wp-content/uploads/2017/10/small-example-pdf-file.pdf</span><br></pre></td></tr></table></figure>
-
-<p>使用以下命令测试 pdfinfo 二进制文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$HOME/fuzzing_xpdf/install/bin/pdfinfo -box -meta $HOME/fuzzing_xpdf/pdf_examples/helloworld.pdf</span><br></pre></td></tr></table></figure>
-
-<p><img src="/../img/fuzzing101_execise1_1.png"></p>
-<p>使用 AFL 的编译器编译源代码</p>
-<p>先删除原先的安装，重新编译安装库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rm -r $HOME/fuzzing_xpdf/install</span><br><span class="line">cd $HOME/fuzzing_xpdf/xpdf-3.02/</span><br><span class="line">make clean</span><br><span class="line"></span><br><span class="line">export LLVM_CONFIG=&quot;llvm-config-11&quot;</span><br><span class="line">CC=$HOME/AFLplusplus/afl-clang-fast CXX=$HOME/AFLplusplus/afl-clang-fast++ ./configure --prefix=&quot;$HOME/fuzzing_xpdf/install/&quot;</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-
-<p>运行fuzzer：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">afl-fuzz -i $HOME/fuzzing_xpdf/pdf_examples/ -o $HOME/fuzzing_xpdf/out/ -s 123 -- $HOME/fuzzing_xpdf/install/bin/pdftotext @@ $HOME/fuzzing_xpdf/output</span><br></pre></td></tr></table></figure>
-
-<pre><code>-i 表示输入示例的目录
-
--o 表示 AFL + + 将存储的变异文件的目录
-
--s 表示要使用的静态随机种子
-
---之后是目标应用程序运行命令
-
-@@ 是占位符目标的命令行，AFL 将用每个输入文件名替换
-</code></pre>
-<p>运行成功后，等待crash出现<br><img src="/../img/fuzzing101_execise1_3.png"><br>可以在$HOME&#x2F;fuzzing_xpdf&#x2F;out&#x2F; 目录中找到这些崩溃文件。</p>
-<h3 id="3-动态调试"><a href="#3-动态调试" class="headerlink" title="3. 动态调试"></a>3. 动态调试</h3><p>在$HOME&#x2F;fuzzing_xpdf&#x2F;out&#x2F;目录下找到 crash 对应的文件。文件名类似于id:000000,sig:11,src:000390,time:103613,execs:71732,op:havoc,rep:16</p>
-<p>将此文件作为输入传递给 pdftotext</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$HOME/fuzzing_xpdf/install/bin/pdftotext id:000000,sig:11,src:001194,time:448368,execs:160443,op:havoc,rep:8 $HOME/fuzzing_xpdf/output</span><br></pre></td></tr></table></figure>
-
-<p>它将导致段错误segmentation fault并导致程序崩溃。<br><img src="/../img/fuzzing101_execise1_6.png"></p>
-<p><strong>调试</strong></p>
-<p>使用 gdb 找出程序因该输入而崩溃的原因。</p>
-<p>首先使用调试信息重建 Xpdf 来获得符号堆栈跟踪：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">rm -r $HOME/fuzzing_xpdf/install</span><br><span class="line">cd $HOME/fuzzing_xpdf/xpdf-3.02/</span><br><span class="line">make clean</span><br><span class="line">CFLAGS=&quot;-g -O0&quot; CXXFLAGS=&quot;-g -O0&quot; ./configure --prefix=&quot;$HOME/fuzzing_xpdf/install/&quot;</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-
-<p>然后使用GDB，输入run</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gdb --args $HOME/fuzzing_xpdf/install/bin/pdftotext $HOME/fuzzing_xpdf/out/default/crashes/id:000000,sig:11,src:001194,time:448368,execs:160443,op:havoc,rep:8 $HOME/fuzzing_xpdf/output</span><br></pre></td></tr></table></figure>
-
-<p><img src="/../img/fuzzing101_execise1_4.png"><br>然后输入bt回溯查看栈帧<br><img src="/../img/fuzzing101_execise1_5.png"></p>
-<p>报错信息Program received signal SIGSEGV, Segmentation fault，存在内存泄漏</p>
-<p>有许多次Parser::getObj的调用，像无限递归</p>
-<p>根据报错从xpdf&#x2F;Parse.cc 94行的makeStream调用发现问题，无限递归<br><img src="/../img/fuzzing101_execise1_7.png"></p>
-<h3 id="4-漏洞修复"><a href="#4-漏洞修复" class="headerlink" title="4. 漏洞修复"></a>4. 漏洞修复</h3><p>下载xpdf4.02源码对比，加了个变量，记录了循环次数，超一定次数就停止</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://dl.xpdfreader.com/old/xpdf-4.02.tar.gz</span><br></pre></td></tr></table></figure>
-
-<p><img src="/../img/fuzzing101_execise1_8.png"></p>
-<h3 id="5-报错解决"><a href="#5-报错解决" class="headerlink" title="5. 报错解决"></a>5. 报错解决</h3><p><img src="/../img/fuzzing101_execise1_9.png"><br>切换到root用户输入echo core &gt;&#x2F;proc&#x2F;sys&#x2F;kernel&#x2F;core_pattern后，再执行一次<br><img src="/../img/fuzzing101_execise1_11.png"><br>在最后加上–host&#x3D;x86_63</p>
-
+<p>CVE-2019-13288 in XPDF 3.02 （infinite recursion）无限递归<br>
+        
+          <a class="article-more-a" href="/2023/07/18/Fuzzing101-Execise1/#more">more >></a>
+        
       
 
       
@@ -536,10 +333,6 @@ RANLIB：符号表添加器名称
 
       
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/07/18/Fuzzing101-Execise1/">展开全文 >></a>
-        </p>
       
 
       
@@ -584,104 +377,47 @@ RANLIB：符号表添加器名称
   	<time datetime="2023-07-07T18:23:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-08</time>
 </a>
         
+
+         <!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  字数统计:</span>
+        <!--这里样式可以自己定制-->
+        <span class="post-count" style="font-size: 14px;color: grey">1k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  阅读时长:</span>
+        <span class="post-count" style="font-size: 14px;color: grey">3分钟</span>
+      </span>
+    </span>
+</div>
+
+          
+        <!-- 添加完成 -->
+
+  
+
+        
+        
+
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>阅读《How to give a good research talk》</strong></p>
-<p><strong>作者：Simon L Peyton Jones</strong></p>
-<p><strong>“research talk”</strong>：30-60分钟的演讲，给一群有动力、有智慧但可能对你的特定领域了解不多的人。</p>
-<h2 id="1-What-this-paper-is-about"><a href="#1-What-this-paper-is-about" class="headerlink" title="1 What this paper is about"></a>1 What this paper is about</h2><p>这篇论文主要是关于作者在计算科学领域演讲的个人经历。</p>
-<h2 id="2-What-to-say"><a href="#2-What-to-say" class="headerlink" title="2 What to say"></a>2 What to say</h2><pre><code>谁是我的主要受众？
-
-如果有人只记得我谈话中的一件事，我希望它是什么？
-</code></pre>
-<h3 id="2-1-Using-examples"><a href="#2-1-Using-examples" class="headerlink" title="2.1 Using examples"></a>2.1 Using examples</h3><ul>
-<li><p>大多数人都是通过尝试解决一系列相关问题来进行研究的，找到一些合适的框架来解决这些问题，然后概括和抽象我们的解决方案。</p>
-</li>
-<li><p>不可忽略了你用来指导工作的激励性例子。</p>
-</li>
-<li><p>举几个例子来说明你想表达的观点是至关重要的。</p>
-</li>
-<li><p>需要反复问自己：“我用例子说明了这个想法&#x2F;定理&#x2F;定义&#x2F;技术&#x2F;算法吗？”</p>
-</li>
-</ul>
-<h3 id="2-2-Pruning-saying-enough-without-saying-too-much"><a href="#2-2-Pruning-saying-enough-without-saying-too-much" class="headerlink" title="2.2 Pruning: saying enough without saying too much"></a>2.2 Pruning: saying enough without saying too much</h3><p>你需要说足够多的话来传达你想法的基本内容，但不能用太多的材料淹没听众</p>
-<p><strong>方法：</strong></p>
-<ul>
-<li><p>采用不统一的方法；对待某些方面比其他方面更详细。突出重点</p>
-</li>
-<li><p>一定要避免花五到十分钟在杂乱无章的介绍</p>
-</li>
-<li><p>直接用一个例子说明正在解决的问题</p>
-</li>
-</ul>
-<h3 id="2-3-Telling-it-how-it-is"><a href="#2-3-Telling-it-how-it-is" class="headerlink" title="2.3 Telling it how it is"></a>2.3 Telling it how it is</h3><ul>
-<li><p>避免隐瞒你所知道的问题</p>
-</li>
-<li><p>对困难持开放态度，可能会发现有人提出的建议正是你所需要的</p>
-</li>
-<li><p>让你的听众帮助你做研究！</p>
-</li>
-</ul>
-<h2 id="3-Visual-aids"><a href="#3-Visual-aids" class="headerlink" title="3 Visual aids"></a>3 Visual aids</h2><p>手写演示幻灯片的<strong>优点</strong>：</p>
-<ul>
-<li>可以避免在开始前就要准备整个演讲</li>
-<li>方便使用颜色。</li>
-<li>更容易绘制图表、添加箭头和气泡等元素。</li>
-<li>人们下意识会整齐排版</li>
-</ul>
-<p>排版会导致人们倾向于在一页幻灯片上包含过多信息，只因为它们仍然“合适”。排版需使用大号字体（至少17pt）。</p>
-<p>在某些情况下，最好使用机器排版，比如程序的输出。</p>
-<h3 id="3-2-What-to-put-on-a-slide"><a href="#3-2-What-to-put-on-a-slide" class="headerlink" title="3.2 What to put on a slide"></a>3.2 What to put on a slide</h3><ul>
-<li><p>一张幻灯片上有六七个“东西”就足够了。</p>
-</li>
-<li><p>幻灯片不应该重复你计划说的内容，但应该强调它；</p>
-</li>
-<li><p>不要把视觉带宽浪费在你要说的事情上。</p>
-</li>
-<li><p>不要像传统的做法那样从内容幻灯片开始，给出演讲的大纲。它会花费一分钟来讲述，而你的听众要等到以后才能理解它。</p>
-</li>
-<li><p>在大约三分之一的过程中，用一张幻灯片来喘口气会很有帮助，幻灯片上写着“这就是我迄今为止讨论的内容，现在我将继续讨论这些领域”，或者诸如此类的内容。这有助于重新定位你的听众，并清楚地表明，如果他们已经迷失了方向，现在是提问的时候了。</p>
-</li>
-<li><p>也可在演讲的每一节开始时，用一张只包含该节标题的幻灯片。</p>
-</li>
-</ul>
-<h3 id="3-3-Preparing-slides"><a href="#3-3-Preparing-slides" class="headerlink" title="3.3 Preparing slides"></a>3.3 Preparing slides</h3><ul>
-<li><p>不要过早地开始写幻灯片。</p>
-</li>
-<li><p>只要在前一天晚上写幻灯片。第二天材料就会在你的脑海里，印象比较深。</p>
-</li>
-<li><p>不要从以前的演讲幻灯片拿出来拼接成新的。</p>
-</li>
-</ul>
-<h2 id="4-Giving-the-talk"><a href="#4-Giving-the-talk" class="headerlink" title="4 Giving the talk"></a>4 Giving the talk</h2><h3 id="4-1-Nerves"><a href="#4-1-Nerves" class="headerlink" title="4.1 Nerves"></a>4.1 Nerves</h3><ul>
-<li><p>紧张永远不会消失</p>
-</li>
-<li><p>尽量与听众进行眼神交流</p>
-</li>
-</ul>
-<h3 id="4-2-Presenting-your-slides"><a href="#4-2-Presenting-your-slides" class="headerlink" title="4.2 Presenting your slides"></a>4.2 Presenting your slides</h3><ul>
-<li><p>一般不需要将幻灯片一行一行地展示</p>
-</li>
-<li><p>指向屏幕通常比指向幻灯片更好</p>
-</li>
-</ul>
-<h3 id="4-3-Timing"><a href="#4-3-Timing" class="headerlink" title="4.3 Timing"></a>4.3 Timing</h3><ul>
-<li><p>大多数人演讲时，一张幻灯片一般能持续2到3分钟</p>
-</li>
-<li><p>计划几个地方，在那里你可以省去一堆幻灯片，当你到达位置时，检查一下时间</p>
-</li>
-<li><p>可以在演讲结束时放几张幻灯片，可以在提前结束时使用这些幻灯片，避免尴尬。通常希望不要使用到这个方法</p>
-</li>
-</ul>
-<h2 id="5-Conclusion"><a href="#5-Conclusion" class="headerlink" title="5 Conclusion"></a>5 Conclusion</h2><ul>
-<li><p>在演讲技巧上投入思考和精力是值得的。</p>
-</li>
-<li><p>只有通过交流，才会有价值。</p>
-</li>
-</ul>
-
+<p><strong>作者：Simon L Peyton Jones</strong><br>
+        
+          <a class="article-more-a" href="/2023/07/08/how-to-give-a-good-research-talk/#more">more >></a>
+        
       
 
       
@@ -702,10 +438,6 @@ RANLIB：符号表添加器名称
 
       
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/07/08/how-to-give-a-good-research-talk/">展开全文 >></a>
-        </p>
       
 
       
@@ -750,21 +482,46 @@ RANLIB：符号表添加器名称
   	<time datetime="2023-07-07T07:01:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-07</time>
 </a>
         
+
+         <!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  字数统计:</span>
+        <!--这里样式可以自己定制-->
+        <span class="post-count" style="font-size: 14px;color: grey">830字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  阅读时长:</span>
+        <span class="post-count" style="font-size: 14px;color: grey">2分钟</span>
+      </span>
+    </span>
+</div>
+
+          
+        <!-- 添加完成 -->
+
+  
+
+        
+        
+
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>阅读《So you want to work in security? (and for some reason ended up here rather than reading other people’s posts on the topic)》</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://ifsec.blogspot.jp/2018/02/so-you-want-to-work-in-security-and-for.html">http://ifsec.blogspot.jp/2018/02/so-you-want-to-work-in-security-and-for.html</a></p>
-<p>在这篇文章中，作者根据他从事安全工作的经验和观察，给出了一些建议。以下是我的一些心得体会：</p>
-<p>1.需要能够走出去，自己学习。<br>我认为这是一个难点，因为我很享受团队合作，很享受有这么一个“师傅”和“学徒”的教学模式或者引领模式。每当我自己要去做点什么，总会觉得无从下手，也许是因为思考得太少，还有惰性使然。我想，酷酷的各种“红黑白客”们肯定不是像我这样的。</p>
-<p>2.现在的安全入门的难度更高了，但现在的学习资源也比以前多得多。也要提醒自己要习惯于独自学习，因为没有人会为我们提供预设的课程。要多利用社交网络，许多安全从业者会在上面分享一些最新的研究成果、漏洞等信息。可以及时了解相关领域的安全专家最新动态。</p>
-<p>3.遇到不理解的事情时，不要放弃，不要害怕失败。<br>深知道曾经跳过的难题，回避的问题，都会在未来的某一天要还回去。我总是会在选择时害怕失败而长久纠结，迟迟不能抉择和开始行动。但其实未来可能会让你遇到很多困难和挫折，也许大多数尝试的方法都会失败。但要学会接受失败，并从中学到经验教训。</p>
-<p>4.参加CTF比赛.CTF比赛是一个很好的学习平台，它可以让你逐渐提高自己的技能。在比赛中，你可以从简单的任务开始，逐渐突破自己的能力限制。</p>
-<p>5.你比你想象的要聪明。虽然我不认为自己是聪明的，也很少有人夸过我聪明。我也常常怀疑自己的能力。但可能事实上，只要努力学习，也可以有点收获。不要轻易放弃自己的想法，坚信每个人都有自己的专长。同时也可能需要一点自信，相信自己是聪明的，也许心理暗示法可以让自己更有自信走下去。</p>
-<p>当然，成为一名从事安全的工作人员可能并非如我们想象的那么酷，那么光鲜亮丽。从事安全工作需要长久坐在电脑面前。这点我还是蛮满意的，因为自己也挺宅，就是有时很耗费精神。可能还需要劳逸结合，多多锻炼。同时它还需要一种乐于独自面对挑战和寻找解决方案的精神。可能这是一份累人的工作。每天都是一个新的挑战，总是要不断地学习新的东西。要多读一些学术论文和研究成果，多和其他从业人员交流，这样会提高技术水平和认识。最后，要始终保持好奇心和学习的态度吧。</p>
-<p>最重要的还是得知行合一！</p>
-
+        <p>阅读《So you want to work in security? (and for some reason ended up here rather than reading other people’s posts on the topic)》<br>
+        
+          <a class="article-more-a" href="/2023/07/07/inspiration/#more">more >></a>
+        
       
 
       
@@ -785,10 +542,6 @@ RANLIB：符号表添加器名称
 
       
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/07/07/inspiration/">展开全文 >></a>
-        </p>
       
 
       
@@ -834,6 +587,18 @@ RANLIB：符号表添加器名称
       	</div>
     </div>
   </div>
+  
+	<!-- 不蒜子统计 -->
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<span id="busuanzi_container_site_pv" style='display:none'>
+		  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+	</span>
+	<span class="post-meta-divider">|</span>
+	<span id="busuanzi_container_site_uv" style='display:none'>
+		  本站总访客数<span id="busuanzi_value_site_uv"></span>人次
+	</span>
+
+
 </footer>
     </div>
     <script>
@@ -848,7 +613,7 @@ RANLIB：符号表添加器名称
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 
@@ -871,25 +636,17 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
       
     
-      
-      
-      
-    
     
 
     <ul style="width: 70%">
     
     
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
-      
-        
-      
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -969,43 +726,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
 
     
-    	<section class="tools-section tools-section-friends" q-show="friends">
-  		
-        <ul class="search-ul">
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接4</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接5</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接6</a>
-            </li>
-          
-        </ul>
-  		
-    	</section>
-    
 
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">a small potato</div>
   	  	
     	</section>
     
