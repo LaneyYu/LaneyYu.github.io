@@ -21,11 +21,11 @@
 <meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise1_4.png">
 <meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise1_5.png">
 <meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise1_7.png">
-<meta property="og:image" content="https://laneyyu.github.io/images/fuzzing101_execise1_8.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise1_8.png">
 <meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise1_9.png">
 <meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise1_11.png">
 <meta property="article:published_time" content="2023-07-17T19:47:25.000Z">
-<meta property="article:modified_time" content="2023-07-19T03:46:59.761Z">
+<meta property="article:modified_time" content="2023-07-22T07:12:04.852Z">
 <meta property="article:tag" content="Fuzzing101">
 <meta property="article:tag" content="实验报告">
 <meta name="twitter:card" content="summary">
@@ -247,6 +247,8 @@ RANLIB：符号表添加器名称
 
 -s 表示要使用的静态随机种子
 
+--之后是目标应用程序运行命令
+
 @@ 是占位符目标的命令行，AFL 将用每个输入文件名替换
 </code></pre>
 <p>运行成功后，等待crash出现<br><img src="/../img/fuzzing101_execise1_3.png"><br>可以在$HOME&#x2F;fuzzing_xpdf&#x2F;out&#x2F; 目录中找到这些崩溃文件。</p>
@@ -270,7 +272,7 @@ RANLIB：符号表添加器名称
 <h3 id="4-漏洞修复"><a href="#4-漏洞修复" class="headerlink" title="4. 漏洞修复"></a>4. 漏洞修复</h3><p>下载xpdf4.02源码对比，加了个变量，记录了循环次数，超一定次数就停止</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://dl.xpdfreader.com/old/xpdf-4.02.tar.gz</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/fuzzing101_execise1_8.png"></p>
+<p><img src="/../img/fuzzing101_execise1_8.png"></p>
 <h3 id="5-报错解决"><a href="#5-报错解决" class="headerlink" title="5. 报错解决"></a>5. 报错解决</h3><p><img src="/../img/fuzzing101_execise1_9.png"><br>切换到root用户输入echo core &gt;&#x2F;proc&#x2F;sys&#x2F;kernel&#x2F;core_pattern后，再执行一次<br><img src="/../img/fuzzing101_execise1_11.png"><br>在最后加上–host&#x3D;x86_63</p>
 
       
@@ -517,19 +519,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">心得</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Fuzzing101</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">实验报告</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">心得</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
             
             <div class="clearfix"></div>
