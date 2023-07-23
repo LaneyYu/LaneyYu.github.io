@@ -6,13 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://laneyyu.github.io">
-  <title>Laney</title>
+  <title>Tips_for_Writing_Technical_Papers | Laney</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Laney">
-<meta property="og:url" content="https://laneyyu.github.io/index.html">
+  <meta name="description" content="阅读《Tips for Writing Technical Papers》 作者：Jennifer Widom">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tips_for_Writing_Technical_Papers">
+<meta property="og:url" content="https://laneyyu.github.io/2023/07/23/Tips-for-Writing-Technical-Papers/index.html">
 <meta property="og:site_name" content="Laney">
+<meta property="og:description" content="阅读《Tips for Writing Technical Papers》 作者：Jennifer Widom">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-07-23T13:13:05.000Z">
+<meta property="article:modified_time" content="2023-07-23T15:17:01.440Z">
+<meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Laney" type="application/atom+xml">
@@ -152,16 +157,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-Tips-for-Writing-Technical-Papers" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Tips-for-Writing-Technical-Papers" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/07/23/Tips-for-Writing-Technical-Papers/">Tips_for_Writing_Technical_Papers</a>
+    <h1 class="article-title" itemprop="name">
+      Tips_for_Writing_Technical_Papers
     </h1>
   
 
@@ -199,17 +202,116 @@
 
   
 
-        <!--  -->
+        <!-- 
+          <span class="archive-article-date">
+              阅读量：<span id="busuanzi_value_page_pv">
+          </span>
+         -->
         
 
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>阅读《Tips for Writing Technical Papers》 作者：Jennifer Widom<br>
-        
-          <a class="article-more-a" href="/2023/07/23/Tips-for-Writing-Technical-Papers/#more">more >></a>
-        
+        <p>阅读《Tips for Writing Technical Papers》 作者：Jennifer Widom<br> <span id="more"></span></p>
+<h1 id="撰写技术论文的技巧"><a href="#撰写技术论文的技巧" class="headerlink" title="撰写技术论文的技巧"></a>撰写技术论文的技巧</h1><h3 id="1-Running-Example"><a href="#1-Running-Example" class="headerlink" title="1.Running Example"></a>1.Running Example</h3><p>需要在论文中提供实验例子</p>
+<h3 id="2-The-Title"><a href="#2-The-Title" class="headerlink" title="2.The Title"></a>2.The Title</h3><ul>
+<li>长的且具有描述性的。如Linear-Time External Multipass Sorting with Approximation Guarantees</li>
+<li>精短的，如Approximate External Sort</li>
+<li>适中的，加上一个可爱的名字，可以吸引人注意，如Floosh: A Linear-Time Algorithm for Approximate External Sort</li>
+</ul>
+<h3 id="3-The-Abstract"><a href="#3-The-Abstract" class="headerlink" title="3.The Abstract"></a>3.The Abstract</h3><p>陈述问题，你的方法和解决方案，以及论文的主要贡献。少写背景和动机。要实事求是，但要全面。摘要中的材料不应在之后的论文中逐字重复。</p>
+<h3 id="4-Introduction"><a href="#4-Introduction" class="headerlink" title="4.Introduction"></a>4.Introduction</h3><p>引言至关重要<br>引言应该包括 五段回答以下五个问题：</p>
+<ul>
+<li>问题出在哪里？</li>
+<li>为什么它有趣和重要？</li>
+<li>为什么很难？（例如，为什么幼稚的方法会失败？</li>
+<li>为什么以前没有解决？（或者，有什么问题 以前提出的解决方案？我的有什么不同？</li>
+<li>我的方法和结果的关键组成部分是什么？还包括任何特定限制。</li>
+</ul>
+<p>最后写一段或分段:“贡献摘要”。以项目符号的形式列出主要贡献，并指出在哪些部分可以找到它们。这种材料可以作为论文其余部分的概括，节省空间并消除冗余。</p>
+<h3 id="5-Related-Work"><a href="#5-Related-Work" class="headerlink" title="5.Related Work"></a>5.Related Work</h3><p>判断写在开始还是结尾</p>
+<ul>
+<li><p><strong>开始</strong>，如果它可以很短但足够详细，或者如果对之前的工作采取强烈的防御立场是至关重要的。在这种情况下，相关工作可以是引言末尾的一个小节，也可以是引言的后1节。</p>
+</li>
+<li><p><strong>结尾</strong>，如果它可以在早期快速总结(在引言或初步)，或者如果足够的比较需要论文的技术内容。在这种情况下，相关工作应该出现在结论之前，可能在“讨论和相关工作”这一节中。</p>
+</li>
+</ul>
+<h3 id="6-The-body"><a href="#6-The-body" class="headerlink" title="6.The body"></a>6.The body</h3><ul>
+<li>准则1：在读者读完第3页时(论文的四分之一)，新的重要技术贡献需要已经清晰地表达出来。</li>
+<li>准则2：论文的每个部分都应该讲述一个故事。(不要把如何得到结果的整个故事都讲出来。只需讲述结果本身。)故事应该是线性的，让读者沉浸在每一步中，并期待下一步。不应该有明显的中断——这些可以放在附录中;见下文。</li>
+</ul>
+<p>除了这些适用于每篇论文的指导方针之外，正文的结构也因内容的不同而有很大的不同。重要组成部分有:</p>
+<ul>
+<li><p><strong>运行示例</strong>:如果可能的话，在整个论文中使用一个运行示例。它既可以作为引言末尾的一个小节来介绍，也可以作为单独的第2或第3节(取决于相关工作)来介绍。</p>
+</li>
+<li><p><strong>前言</strong>:本节，在引言和可能的相关工作和&#x2F;或运行示例之后，设置了不属于技术贡献的符号和术语。本节的一个重要功能是描述论文所需要的非原创材料。要简洁.</p>
+</li>
+<li><p><strong>内容</strong>:本文主要包括算法、系统描述、新的语言结构、分析等。只要有可能，使用“自上而下”的描述:读者应该能够看到材料的发展方向，他们应该能够跳过，仍然得到想法。</p>
+</li>
+</ul>
+<h3 id="7-Performance-Experiments"><a href="#7-Performance-Experiments" class="headerlink" title="7.Performance Experiments"></a>7.Performance Experiments</h3><p>性能实验应该测量什么?</p>
+<ul>
+<li>纯运行时间</li>
+<li>对重要参数的敏感性</li>
+<li>各方面的可扩展性:数据大小、问题复杂性……</li>
+<li>其他</li>
+</ul>
+<p>性能实验应该显示什么?</p>
+<ul>
+<li>绝对性能(即，它是可接受的&#x2F;可用的)</li>
+<li>相对于朴素方法的性能</li>
+<li>相对于以前的方法的性能</li>
+<li>不同建议方法之间的相对性能</li>
+<li>其他</li>
+</ul>
+<h3 id="8-The-Conclusions"><a href="#8-The-Conclusions" class="headerlink" title="8.The Conclusions"></a>8.The Conclusions</h3><p>一般来说，一个简短的总结段落就可以了，在任何情况下，段落都不应该简单地重复摘要或引言中的材料。在某些情况下，可更加具体，例如，通过参考定量性能结果。</p>
+<h3 id="9-Future-Work"><a href="#9-Future-Work" class="headerlink" title="9.Future Work"></a>9.Future Work</h3><p>一篇论文的部分价值在于展示这项工作是如何设定新的研究方向的。要记住以下几点:</p>
+<ul>
+<li><p>如果你积极参与后续工作，就说出来。例如:“我们目前正在将算法扩展到……等等，初步结果…..。”这句话是用来标明你的领域的。</p>
+</li>
+<li><p>相反，要注意一些研究人员会在“未来工作”部分寻找研究主题。</p>
+</li>
+</ul>
+<h3 id="10-The-Acknowledgements"><a href="#10-The-Acknowledgements" class="headerlink" title="10.The Acknowledgements"></a>10.The Acknowledgements</h3><h3 id="11-Citations"><a href="#11-Citations" class="headerlink" title="11.Citations"></a>11.Citations</h3><p>让所有的引用都完整一致。</p>
+<h3 id="12-Appendices"><a href="#12-Appendices" class="headerlink" title="12.Appendices"></a>12.Appendices</h3><p>附录只应包含详细的证明和算法。</p>
+<p>不应该包含任何理解论文贡献所必需的材料。<br>应该包含大多数读者不感兴趣的所有材料。</p>
+<h3 id="13-Grammar-and-Small-Scale-Presentation-Issues"><a href="#13-Grammar-and-Small-Scale-Presentation-Issues" class="headerlink" title="13.Grammar and Small-Scale Presentation Issues"></a>13.Grammar and Small-Scale Presentation Issues</h3><p>论文中的所有“变量”(术语和符号)都应该在使用之前定义，并且应该只定义一次。(例外:有时在长时间的停顿之后，提醒读者一个定义是有用的。)全局定义应归入“初步”部分;其他定义应该在第一次使用之前给出。</p>
+<ul>
+<li><p>不要使用“等等”，除非剩下的项目是完全明显的。</p>
+<p>  可接受:我们将编号为第1、3、5、7等阶段。</p>
+<p>  不可接受:我们衡量诸如波动性、可伸缩性等性能因素。</p>
+</li>
+<li><p>不要说“出于各种原因”。(由于种种原因，我们决定不考虑另一种选择。)告诉读者原因!</p>
+</li>
+<li><p>避免使用“this”，“that”，“these”，“it”等非指称性的用法(Ullman pet pepeve)。</p>
+</li>
+<li><p>斜体字用于定义或引用，而不是用于强调(Gries pet pepeme)。</p>
+</li>
+<li><p>人们经常错误地使用which和that。“That”是定义;“which”是非定义性的。正确用法的例子:<br>  The algorithms that are easy to implement all run in linear time.<br>  The algorithms, which are easy to implement, all run in linear time.</p>
+</li>
+</ul>
+<h3 id="14-Mechanics"><a href="#14-Mechanics" class="headerlink" title="14.Mechanics"></a>14.Mechanics</h3><ul>
+<li><p>拼写检查</p>
+</li>
+<li><p>对于草稿和技术报告，使用11点字体，大间距，1”页边距，单列格式。</p>
+</li>
+<li><p>数字中的字体应该与论文正文中使用的字体大小大致相同。</p>
+</li>
+<li><p>表格、图形、图表和算法应该总是放在一页或一栏的顶部，而不是在正文中，除非它非常小，适合论文的流程。</p>
+</li>
+<li><p>每个表、图形、图形或算法都应该出现在与其第一个引用相同的页面上，或者出现在下一页</p>
+</li>
+<li><p>在论文最终提交或发表之前，打印一次并检查</p>
+</li>
+</ul>
+<h3 id="15-Versions-and-Distribution"><a href="#15-Versions-and-Distribution" class="headerlink" title="15.Versions and Distribution"></a>15.Versions and Distribution</h3><ul>
+<li><p>许多论文都有提交(后来发表)的会议版本，以及网络上的“完整论文”技术报告。小心地管理版本是很重要的，包括内容和扩展。只要有可能，完整的论文只包括会议版本和附录。论文全文应该是会议记录之外唯一公开的论文，它应该与最新(最终)会议版本相协调，对论文全文的修改应该总是覆盖所有可公开访问的先前版本。</p>
+</li>
+<li><p>我相信论文一完成就把它们放到网上。它们应该注明日期，并且可以作为技术报告引用——没有必要拥有实际的技术报告编号。不要在刚提交的论文上加上会议版权声明，不要在论文中注明“提交给x会议”。</p>
+</li>
+</ul>
+
       
 
       
@@ -233,228 +335,73 @@
       
 
       
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
         
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Fuzzing101-Execise3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/07/23/Fuzzing101-Execise3/">Fuzzing101-Execise3</a>
-    </h1>
-  
-
-        
-        <a href="/2023/07/23/Fuzzing101-Execise3/" class="archive-article-date">
-  	<time datetime="2023-07-23T05:07:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-23</time>
-</a>
-        
-
-         <!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  字数统计:</span>
-        <!--这里样式可以自己定制-->
-        <span class="post-count" style="font-size: 14px;color: grey">520字</span>
-      </span>
+      </div>
     </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  阅读时长:</span>
-        <span class="post-count" style="font-size: 14px;color: grey">2分钟</span>
-      </span>
-    </span>
+  </div>
 </div>
 
-          
-        <!-- 添加完成 -->
-
-  
-
-        <!--  -->
-        
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Exercise 3 - tcpdump(使用ASAN)</p>
-<p>CVE-2017-13028 in TCPdump 4.9.2（Out-of-bounds Read）<br>
-        
-          <a class="article-more-a" href="/2023/07/23/Fuzzing101-Execise3/#more">more >></a>
-        
-      
-
-      
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://laneyyu.github.io/2023/07/23/Tips-for-Writing-Technical-Papers/" alt="微信分享二维码">
     </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">实验报告</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">fuzzing101</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Fuzzing101-Execise2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/07/21/Fuzzing101-Execise2/">Fuzzing101-Execise2</a>
-    </h1>
-  
-
-        
-        <a href="/2023/07/21/Fuzzing101-Execise2/" class="archive-article-date">
-  	<time datetime="2023-07-21T15:51:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-21</time>
-</a>
-        
-
-         <!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  字数统计:</span>
-        <!--这里样式可以自己定制-->
-        <span class="post-count" style="font-size: 14px;color: grey">718字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  阅读时长:</span>
-        <span class="post-count" style="font-size: 14px;color: grey">3分钟</span>
-      </span>
-    </span>
 </div>
 
-          
-        <!-- 添加完成 -->
-
-  
-
-        <!--  -->
-        
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>Fuzzing101 Execise2</strong></p>
-<p>CVE-2009-3895 （heap-based buffer overflow）and CVE-2012-2836 （Out-of-bounds Read）in libexif 0.6.14<br>
-        
-          <a class="article-more-a" href="/2023/07/21/Fuzzing101-Execise2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">实验报告</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">fuzzing101</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2023/07/23/Fuzzing101-Execise3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Fuzzing101-Execise3</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -469,335 +416,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Fuzzing101-Execise1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/07/18/Fuzzing101-Execise1/">Fuzzing101_Execise1</a>
-    </h1>
-  
-
-        
-        <a href="/2023/07/18/Fuzzing101-Execise1/" class="archive-article-date">
-  	<time datetime="2023-07-17T19:47:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-18</time>
-</a>
-        
-
-         <!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  字数统计:</span>
-        <!--这里样式可以自己定制-->
-        <span class="post-count" style="font-size: 14px;color: grey">1.1k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  阅读时长:</span>
-        <span class="post-count" style="font-size: 14px;color: grey">5分钟</span>
-      </span>
-    </span>
-</div>
-
-          
-        <!-- 添加完成 -->
-
-  
-
-        <!--  -->
-        
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>Fuzzing101 Execise1</strong></p>
-<p>CVE-2019-13288 in XPDF 3.02 （infinite recursion）无限递归<br>
-        
-          <a class="article-more-a" href="/2023/07/18/Fuzzing101-Execise1/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">实验报告</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">fuzzing101</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%92%B0%E5%86%99%E6%8A%80%E6%9C%AF%E8%AE%BA%E6%96%87%E7%9A%84%E6%8A%80%E5%B7%A7"><span class="toc-number">1.</span> <span class="toc-text">撰写技术论文的技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Running-Example"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.Running Example</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-The-Title"><span class="toc-number">1.0.2.</span> <span class="toc-text">2.The Title</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-The-Abstract"><span class="toc-number">1.0.3.</span> <span class="toc-text">3.The Abstract</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Introduction"><span class="toc-number">1.0.4.</span> <span class="toc-text">4.Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Related-Work"><span class="toc-number">1.0.5.</span> <span class="toc-text">5.Related Work</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-The-body"><span class="toc-number">1.0.6.</span> <span class="toc-text">6.The body</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-Performance-Experiments"><span class="toc-number">1.0.7.</span> <span class="toc-text">7.Performance Experiments</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-The-Conclusions"><span class="toc-number">1.0.8.</span> <span class="toc-text">8.The Conclusions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-Future-Work"><span class="toc-number">1.0.9.</span> <span class="toc-text">9.Future Work</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-The-Acknowledgements"><span class="toc-number">1.0.10.</span> <span class="toc-text">10.The Acknowledgements</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-Citations"><span class="toc-number">1.0.11.</span> <span class="toc-text">11.Citations</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-Appendices"><span class="toc-number">1.0.12.</span> <span class="toc-text">12.Appendices</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-Grammar-and-Small-Scale-Presentation-Issues"><span class="toc-number">1.0.13.</span> <span class="toc-text">13.Grammar and Small-Scale Presentation Issues</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-Mechanics"><span class="toc-number">1.0.14.</span> <span class="toc-text">14.Mechanics</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-Versions-and-Distribution"><span class="toc-number">1.0.15.</span> <span class="toc-text">15.Versions and Distribution</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
   
-    <article id="post-how-to-give-a-good-research-talk" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/07/08/how-to-give-a-good-research-talk/">How_to_give_a_good_research_talk</a>
-    </h1>
   
-
-        
-        <a href="/2023/07/08/how-to-give-a-good-research-talk/" class="archive-article-date">
-  	<time datetime="2023-07-07T18:23:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-08</time>
-</a>
-        
-
-         <!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  字数统计:</span>
-        <!--这里样式可以自己定制-->
-        <span class="post-count" style="font-size: 14px;color: grey">1k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  阅读时长:</span>
-        <span class="post-count" style="font-size: 14px;color: grey">3分钟</span>
-      </span>
-    </span>
-</div>
-
-          
-        <!-- 添加完成 -->
 
   
 
-        <!--  -->
-        
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>阅读《How to give a good research talk》</strong></p>
-<p><strong>作者：Simon L Peyton Jones</strong><br>
-        
-          <a class="article-more-a" href="/2023/07/08/how-to-give-a-good-research-talk/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-inspiration" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/07/07/inspiration/">《So you want to work in security?》</a>
-    </h1>
   
 
-        
-        <a href="/2023/07/07/inspiration/" class="archive-article-date">
-  	<time datetime="2023-07-07T07:01:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-07</time>
-</a>
-        
-
-         <!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  字数统计:</span>
-        <!--这里样式可以自己定制-->
-        <span class="post-count" style="font-size: 14px;color: grey">830字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  阅读时长:</span>
-        <span class="post-count" style="font-size: 14px;color: grey">2分钟</span>
-      </span>
-    </span>
-</div>
-
-          
-        <!-- 添加完成 -->
-
-  
-
-        <!--  -->
-        
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>阅读《So you want to work in security? (and for some reason ended up here rather than reading other people’s posts on the topic)》<br>
-        
-          <a class="article-more-a" href="/2023/07/07/inspiration/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">心得</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
 
 
@@ -832,8 +476,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
