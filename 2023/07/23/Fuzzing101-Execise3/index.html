@@ -6,14 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://laneyyu.github.io">
-  <title>Archives | Laney</title>
+  <title>Fuzzing101-Execise3 | Laney</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Laney">
-<meta property="og:url" content="https://laneyyu.github.io/archives/index.html">
+  <meta name="description" content="Exercise 3 - tcpdump(使用ASAN) CVE-2017-13028 in TCPdump 4.9.2（Out-of-bounds Read）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fuzzing101-Execise3">
+<meta property="og:url" content="https://laneyyu.github.io/2023/07/23/Fuzzing101-Execise3/index.html">
 <meta property="og:site_name" content="Laney">
+<meta property="og:description" content="Exercise 3 - tcpdump(使用ASAN) CVE-2017-13028 in TCPdump 4.9.2（Out-of-bounds Read）">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise3_1.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise3_2.png">
+<meta property="article:published_time" content="2023-07-23T05:07:21.000Z">
+<meta property="article:modified_time" content="2023-07-23T13:03:51.672Z">
+<meta property="article:tag" content="实验报告">
+<meta property="article:tag" content="fuzzing101">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://laneyyu.github.io/img/fuzzing101_execise3_1.png">
   
     <link rel="alternative" href="/atom.xml" title="Laney" type="application/atom+xml">
   
@@ -152,36 +161,87 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Fuzzing101-Execise3" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Fuzzing101-Execise3
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/07/23/Fuzzing101-Execise3/" class="archive-article-date">
+
+        
+        <a href="/2023/07/23/Fuzzing101-Execise3/" class="archive-article-date">
   	<time datetime="2023-07-23T05:07:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-23</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/07/23/Fuzzing101-Execise3/">Fuzzing101-Execise3</a>
-    </h1>
+        
+
+         <!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  字数统计:</span>
+        <!--这里样式可以自己定制-->
+        <span class="post-count" style="font-size: 14px;color: grey">520字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  阅读时长:</span>
+        <span class="post-count" style="font-size: 14px;color: grey">2分钟</span>
+      </span>
+    </span>
+</div>
+
+          
+        <!-- 添加完成 -->
+
   
 
-        <div class="article-info info-on-right">
-          
+        <!-- 
+          <span class="archive-article-date">
+              阅读量：<span id="busuanzi_value_page_pv">
+          </span>
+         -->
+        
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Exercise 3 - tcpdump(使用ASAN)</p>
+<p>CVE-2017-13028 in TCPdump 4.9.2（Out-of-bounds Read）<br> <span id="more"></span></p>
+<h1 id="Download-and-build-your-target"><a href="#Download-and-build-your-target" class="headerlink" title="Download and build your target"></a>Download and build your target</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">cd $HOME</span><br><span class="line">mkdir fuzzing_tcpdump &amp;&amp; cd fuzzing_tcpdump/</span><br><span class="line">//下载 tcpdump-4.9.2.tar.gz</span><br><span class="line">wget https://github.com/the-tcpdump-group/tcpdump/archive/refs/tags/tcpdump-4.9.2.tar.gz</span><br><span class="line">tar -xzvf tcpdump-4.9.2.tar.gz</span><br><span class="line"></span><br><span class="line">//下载libpcap，这是TCPdump需要的跨平台库。</span><br><span class="line">wget https://github.com/the-tcpdump-group/libpcap/archive/refs/tags/libpcap-1.8.0.tar.gz</span><br><span class="line">tar -xzvf libpcap-1.8.0.tar.gz</span><br><span class="line"></span><br><span class="line">//需要重命名，否则tcpdump 找不到本地路径</span><br><span class="line">mv libpcap-libpcap-1.8.0/ libpcap-1.8.0</span><br><span class="line"></span><br><span class="line">//构建并安装 libpcap</span><br><span class="line">cd libpcap-1.8.0/</span><br><span class="line">./configure --enable-shared=no</span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">//构建并安装tcpdump</span><br><span class="line">cd tcpdump-tcpdump-4.9.2/</span><br><span class="line">./configure --prefix=&quot;$HOME/fuzzing101/fuzzing_tcpdump/install/&quot;</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"></span><br><span class="line">//测试是否正常</span><br><span class="line">$HOME/fuzzing101/fuzzing_tcpdump/install/sbin/tcpdump -h</span><br></pre></td></tr></table></figure>
+<p><img src="/../img/fuzzing101_execise3_1.png"></p>
+<h1 id="种子语料库的创建"><a href="#种子语料库的创建" class="headerlink" title="种子语料库的创建"></a>种子语料库的创建</h1><p>可以在“.&#x2F;tests”文件夹中找到很多.pcacp示例，使用以下命令运行这些 .pcap 文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$HOME/fuzzing101/fuzzing_tcpdump/install/sbin/tcpdump -vvvvXX -ee -nn -r [.pcap file]</span><br><span class="line">//比如</span><br><span class="line">$HOME/fuzzing101/fuzzing_tcpdump/install/sbin/tcpdump -vvvvXX -ee -nn -r ./tests/geneve.pcap</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img src="/../img/fuzzing101_execise3_2.png"></p>
+<h1 id="启用-ASan-进行构建"><a href="#启用-ASan-进行构建" class="headerlink" title="启用 ASan 进行构建"></a>启用 ASan 进行构建</h1><p>AddressSanitizer (ASan) 是用于 C 和 C++ 的快速内存错误检测器。</p>
+<p>它由编译器检测模块和运行时库组成。该工具能够查找对堆、堆栈和全局对象的越界访问，以及释放后使用、双重释放和内存泄漏错误。</p>
+<p>构建启用 ASAN 的 tcpdump（和 libpcap）。</p>
+<p>先清理所有先前编译的目标文件和可执行文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">rm -r $HOME/fuzzing101/fuzzing_tcpdump/install</span><br><span class="line">cd $HOME/fuzzing101/fuzzing_tcpdump/libpcap-1.8.0/</span><br><span class="line">make clean</span><br><span class="line"></span><br><span class="line">cd $HOME/fuzzing101/fuzzing_tcpdump/tcpdump-tcpdump-4.9.2/</span><br><span class="line">make clean</span><br></pre></td></tr></table></figure>
+<p>在调用configure 和make之前设置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cd $HOME/fuzzing101/fuzzing_tcpdump/libpcap-1.8.0/</span><br><span class="line">export LLVM_CONFIG=&quot;llvm-config-11&quot;</span><br><span class="line">CC=afl-clang-lto ./configure --enable-shared=no --prefix=&quot;$HOME/fuzzing101/fuzzing_tcpdump/install/&quot;</span><br><span class="line">AFL_USE_ASAN=1 make</span><br><span class="line"></span><br><span class="line">cd $HOME/fuzzing101/fuzzing_tcpdump/tcpdump-tcpdump-4.9.2/</span><br><span class="line">AFL_USE_ASAN=1 CC=afl-clang-lto ./configure --prefix=&quot;$HOME/fuzzing101/fuzzing_tcpdump/install/&quot;</span><br><span class="line">AFL_USE_ASAN=1 make</span><br><span class="line">AFL_USE_ASAN=1 make install</span><br></pre></td></tr></table></figure>
+<h1 id="模糊测试"><a href="#模糊测试" class="headerlink" title="模糊测试"></a>模糊测试</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">afl-fuzz -m none -i $HOME/fuzzing101/fuzzing_tcpdump/tcpdump-tcpdump-4.9.2/tests/ -o $HOME/fuzzing101/fuzzing_tcpdump/out/ -s 123 -- $HOME/fuzzing101/fuzzing_tcpdump/install/sbin/tcpdump -vvvvXX -ee -nn -r @@</span><br></pre></td></tr></table></figure>
+<p>64 位系统上的 ASAN 需要大量虚拟内存。需要设置了标志“-m none”来禁用 AFL 中的内存限制</p>
+<p>跑了3小时还未有crash，在解决</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -197,183 +257,119 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://laneyyu.github.io/2023/07/23/Fuzzing101-Execise3/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/07/21/Fuzzing101-Execise2/" class="archive-article-date">
-  	<time datetime="2023-07-21T15:51:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-21</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2023/07/21/Fuzzing101-Execise2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Fuzzing101-Execise2</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/07/21/Fuzzing101-Execise2/">Fuzzing101-Execise2</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">实验报告</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">fuzzing101</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Download-and-build-your-target"><span class="toc-number">1.</span> <span class="toc-text">Download and build your target</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A7%8D%E5%AD%90%E8%AF%AD%E6%96%99%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-number">2.</span> <span class="toc-text">种子语料库的创建</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%AF%E7%94%A8-ASan-%E8%BF%9B%E8%A1%8C%E6%9E%84%E5%BB%BA"><span class="toc-number">3.</span> <span class="toc-text">启用 ASan 进行构建</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A8%A1%E7%B3%8A%E6%B5%8B%E8%AF%95"><span class="toc-number">4.</span> <span class="toc-text">模糊测试</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/07/18/Fuzzing101-Execise1/" class="archive-article-date">
-  	<time datetime="2023-07-17T19:47:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-18</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/07/18/Fuzzing101-Execise1/">Fuzzing101_Execise1</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">实验报告</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">fuzzing101</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/07/08/how-to-give-a-good-research-talk/" class="archive-article-date">
-  	<time datetime="2023-07-07T18:23:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/07/08/how-to-give-a-good-research-talk/">How_to_give_a_good_research_talk</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/07/07/inspiration/" class="archive-article-date">
-  	<time datetime="2023-07-07T07:01:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/07/07/inspiration/">《So you want to work in security?》</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">心得</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -408,8 +404,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
