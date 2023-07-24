@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="https://laneyyu.github.io">
   <title>Fuzzing101-Exercise4 | Laney</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Exercise 4 - libtiff（coverage优化）CVE-2016-9297 in libtiff 4.0.4 （Out-of-bounds Read）">
+  <meta name="description" content="Execise 4 - libtiff（coverage优化）CVE-2016-9297 in libtiff 4.0.4 （Out-of-bounds Read）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Fuzzing101-Exercise4">
 <meta property="og:url" content="https://laneyyu.github.io/2023/07/24/Fuzzing101-Exercise4/index.html">
 <meta property="og:site_name" content="Laney">
-<meta property="og:description" content="Exercise 4 - libtiff（coverage优化）CVE-2016-9297 in libtiff 4.0.4 （Out-of-bounds Read）">
+<meta property="og:description" content="Execise 4 - libtiff（coverage优化）CVE-2016-9297 in libtiff 4.0.4 （Out-of-bounds Read）">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise4_1.png">
 <meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise4_2.png">
 <meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise4_3.png">
 <meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise4_4.png">
 <meta property="article:published_time" content="2023-07-24T06:53:01.000Z">
-<meta property="article:modified_time" content="2023-07-24T08:03:41.565Z">
+<meta property="article:modified_time" content="2023-07-24T08:22:52.333Z">
 <meta property="article:tag" content="fuzzing101">
 <meta property="article:tag" content="实验报告">
 <meta name="twitter:card" content="summary">
@@ -61,10 +61,10 @@
 			<img src="/assets/img/touxiang.jpg">
 			
 		<hgroup>
-		  <h1 class="header-author"><a href="/"></a></h1>
+		  <h1 class="header-author"><a href="/">Laney</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">盲人摸象</p>
+		<p class="header-subtitle">俺是盲人，在找大象</p>
 		
 
 		<nav class="header-menu">
@@ -115,10 +115,10 @@
 				<img src="/assets/img/touxiang.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author"></h1>
+			  <h1 class="header-author js-header-author">Laney</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>盲人摸象<i class="icon icon-quo-right"></i></p>
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>俺是盲人，在找大象<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -219,7 +219,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Exercise 4 - libtiff（coverage优化）<br>CVE-2016-9297 in libtiff 4.0.4 （Out-of-bounds Read）<br> <span id="more"></span></p>
+        <p>Execise 4 - libtiff（coverage优化）<br>CVE-2016-9297 in libtiff 4.0.4 （Out-of-bounds Read）<br> <span id="more"></span></p>
 <h3 id="下载、构建目标"><a href="#下载、构建目标" class="headerlink" title="下载、构建目标"></a>下载、构建目标</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cd $HOME</span><br><span class="line">mkdir fuzzing_tiff &amp;&amp; cd fuzzing_tiff/</span><br><span class="line">wget https://download.osgeo.org/libtiff/tiff-4.0.4.tar.gz</span><br><span class="line">tar -xzvf tiff-4.0.4.tar.gz</span><br><span class="line"></span><br><span class="line">cd tiff-4.0.4/</span><br><span class="line">./configure --prefix=&quot;$HOME/fuzzing101/fuzzing_tiff/install/&quot; --disable-shared</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
 <p>作为目标二进制文件，我们可以对位于 &#x2F;bin 文件夹中的 tiffinfo 二进制文件进行模糊测试。作为种子输入语料库，我们将使用 &#x2F;test&#x2F;images&#x2F; 文件夹中的示例图像。<br>测试</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$HOME/fuzzing101/fuzzing_tiff/install/bin/tiffinfo -D -j -c -r -s -w $HOME/fuzzing101/fuzzing_tiff/tiff-4.0.4/test/images/palette-1c-1b.tiff</span><br></pre></td></tr></table></figure>

@@ -6,23 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://laneyyu.github.io">
-  <title>Fuzzing101-Execise3 | Laney</title>
+  <title>Fuzzing101_Exercise1 | Laney</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Exercise 3 - tcpdump(使用ASAN) CVE-2017-13028 in TCPdump 4.9.2（Out-of-bounds Read）">
+  <meta name="description" content="Fuzzing101 Exercise1 CVE-2019-13288 in XPDF 3.02 （infinite recursion）无限递归">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Fuzzing101-Execise3">
-<meta property="og:url" content="https://laneyyu.github.io/2023/07/23/Fuzzing101-Execise3/index.html">
+<meta property="og:title" content="Fuzzing101_Exercise1">
+<meta property="og:url" content="https://laneyyu.github.io/2023/07/18/Fuzzing101-Exercise1/index.html">
 <meta property="og:site_name" content="Laney">
-<meta property="og:description" content="Exercise 3 - tcpdump(使用ASAN) CVE-2017-13028 in TCPdump 4.9.2（Out-of-bounds Read）">
+<meta property="og:description" content="Fuzzing101 Exercise1 CVE-2019-13288 in XPDF 3.02 （infinite recursion）无限递归">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise3_1.png">
-<meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise3_2.png">
-<meta property="article:published_time" content="2023-07-23T05:07:21.000Z">
-<meta property="article:modified_time" content="2023-07-24T02:22:57.248Z">
+<meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise1_1.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise1_3.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise1_6.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise1_4.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise1_5.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise1_7.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise1_8.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise1_9.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise1_11.png">
+<meta property="article:published_time" content="2023-07-17T19:47:25.000Z">
+<meta property="article:modified_time" content="2023-07-24T08:21:58.459Z">
 <meta property="article:tag" content="fuzzing101">
 <meta property="article:tag" content="实验报告">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://laneyyu.github.io/img/fuzzing101_execise3_1.png">
+<meta name="twitter:image" content="https://laneyyu.github.io/img/fuzzing101_execise1_1.png">
   
     <link rel="alternative" href="/atom.xml" title="Laney" type="application/atom+xml">
   
@@ -59,10 +66,10 @@
 			<img src="/assets/img/touxiang.jpg">
 			
 		<hgroup>
-		  <h1 class="header-author"><a href="/"></a></h1>
+		  <h1 class="header-author"><a href="/">Laney</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">盲人摸象</p>
+		<p class="header-subtitle">俺是盲人，在找大象</p>
 		
 
 		<nav class="header-menu">
@@ -113,10 +120,10 @@
 				<img src="/assets/img/touxiang.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author"></h1>
+			  <h1 class="header-author js-header-author">Laney</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>盲人摸象<i class="icon icon-quo-right"></i></p>
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>俺是盲人，在找大象<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -161,20 +168,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Fuzzing101-Execise3" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Fuzzing101-Exercise1" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Fuzzing101-Execise3
+      Fuzzing101_Exercise1
     </h1>
   
 
         
-        <a href="/2023/07/23/Fuzzing101-Execise3/" class="archive-article-date">
-  	<time datetime="2023-07-23T05:07:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-23</time>
+        <a href="/2023/07/18/Fuzzing101-Exercise1/" class="archive-article-date">
+  	<time datetime="2023-07-17T19:47:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-18</time>
 </a>
         
 
@@ -187,7 +194,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text" style="font-size: 14px;color: grey">  字数统计:</span>
         <!--这里样式可以自己定制-->
-        <span class="post-count" style="font-size: 14px;color: grey">520字</span>
+        <span class="post-count" style="font-size: 14px;color: grey">1.1k字</span>
       </span>
     </span>
 
@@ -196,7 +203,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text" style="font-size: 14px;color: grey">  阅读时长:</span>
-        <span class="post-count" style="font-size: 14px;color: grey">2分钟</span>
+        <span class="post-count" style="font-size: 14px;color: grey">5分钟</span>
       </span>
     </span>
 </div>
@@ -217,23 +224,95 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Exercise 3 - tcpdump(使用ASAN)</p>
-<p>CVE-2017-13028 in TCPdump 4.9.2（Out-of-bounds Read）<br> <span id="more"></span></p>
-<h1 id="Download-and-build-your-target"><a href="#Download-and-build-your-target" class="headerlink" title="Download and build your target"></a>Download and build your target</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">cd $HOME</span><br><span class="line">mkdir fuzzing_tcpdump &amp;&amp; cd fuzzing_tcpdump/</span><br><span class="line">//下载 tcpdump-4.9.2.tar.gz</span><br><span class="line">wget https://github.com/the-tcpdump-group/tcpdump/archive/refs/tags/tcpdump-4.9.2.tar.gz</span><br><span class="line">tar -xzvf tcpdump-4.9.2.tar.gz</span><br><span class="line"></span><br><span class="line">//下载libpcap，这是TCPdump需要的跨平台库。</span><br><span class="line">wget https://github.com/the-tcpdump-group/libpcap/archive/refs/tags/libpcap-1.8.0.tar.gz</span><br><span class="line">tar -xzvf libpcap-1.8.0.tar.gz</span><br><span class="line"></span><br><span class="line">//需要重命名，否则tcpdump 找不到本地路径</span><br><span class="line">mv libpcap-libpcap-1.8.0/ libpcap-1.8.0</span><br><span class="line"></span><br><span class="line">//构建并安装 libpcap</span><br><span class="line">cd libpcap-1.8.0/</span><br><span class="line">./configure --enable-shared=no</span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">//构建并安装tcpdump</span><br><span class="line">cd tcpdump-tcpdump-4.9.2/</span><br><span class="line">./configure --prefix=&quot;$HOME/fuzzing101/fuzzing_tcpdump/install/&quot;</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"></span><br><span class="line">//测试是否正常</span><br><span class="line">$HOME/fuzzing101/fuzzing_tcpdump/install/sbin/tcpdump -h</span><br></pre></td></tr></table></figure>
-<p><img src="/../img/fuzzing101_execise3_1.png"></p>
-<h1 id="种子语料库的创建"><a href="#种子语料库的创建" class="headerlink" title="种子语料库的创建"></a>种子语料库的创建</h1><p>可以在“.&#x2F;tests”文件夹中找到很多.pcacp示例，使用以下命令运行这些 .pcap 文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$HOME/fuzzing101/fuzzing_tcpdump/install/sbin/tcpdump -vvvvXX -ee -nn -r [.pcap file]</span><br><span class="line">//比如</span><br><span class="line">$HOME/fuzzing101/fuzzing_tcpdump/install/sbin/tcpdump -vvvvXX -ee -nn -r ./tests/geneve.pcap</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><img src="/../img/fuzzing101_execise3_2.png"></p>
-<h1 id="启用-ASan-进行构建"><a href="#启用-ASan-进行构建" class="headerlink" title="启用 ASan 进行构建"></a>启用 ASan 进行构建</h1><p>AddressSanitizer (ASan) 是用于 C 和 C++ 的快速内存错误检测器。</p>
-<p>它由编译器检测模块和运行时库组成。该工具能够查找对堆、堆栈和全局对象的越界访问，以及释放后使用、双重释放和内存泄漏错误。</p>
-<p>构建启用 ASAN 的 tcpdump（和 libpcap）。</p>
-<p>先清理所有先前编译的目标文件和可执行文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">rm -r $HOME/fuzzing101/fuzzing_tcpdump/install</span><br><span class="line">cd $HOME/fuzzing101/fuzzing_tcpdump/libpcap-1.8.0/</span><br><span class="line">make clean</span><br><span class="line"></span><br><span class="line">cd $HOME/fuzzing101/fuzzing_tcpdump/tcpdump-tcpdump-4.9.2/</span><br><span class="line">make clean</span><br></pre></td></tr></table></figure>
-<p>在调用configure 和make之前设置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cd $HOME/fuzzing101/fuzzing_tcpdump/libpcap-1.8.0/</span><br><span class="line">export LLVM_CONFIG=&quot;llvm-config-11&quot;</span><br><span class="line">CC=afl-clang-lto ./configure --enable-shared=no --prefix=&quot;$HOME/fuzzing101/fuzzing_tcpdump/install/&quot;</span><br><span class="line">AFL_USE_ASAN=1 make</span><br><span class="line"></span><br><span class="line">cd $HOME/fuzzing101/fuzzing_tcpdump/tcpdump-tcpdump-4.9.2/</span><br><span class="line">AFL_USE_ASAN=1 CC=afl-clang-lto ./configure --prefix=&quot;$HOME/fuzzing101/fuzzing_tcpdump/install/&quot;</span><br><span class="line">AFL_USE_ASAN=1 make</span><br><span class="line">AFL_USE_ASAN=1 make install</span><br></pre></td></tr></table></figure>
-<h1 id="模糊测试"><a href="#模糊测试" class="headerlink" title="模糊测试"></a>模糊测试</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">afl-fuzz -m none -i $HOME/fuzzing101/fuzzing_tcpdump/tcpdump-tcpdump-4.9.2/tests/ -o $HOME/fuzzing101/fuzzing_tcpdump/out/ -s 123 -- $HOME/fuzzing101/fuzzing_tcpdump/install/sbin/tcpdump -vvvvXX -ee -nn -r @@</span><br></pre></td></tr></table></figure>
-<p>64 位系统上的 ASAN 需要大量虚拟内存。需要设置了标志“-m none”来禁用 AFL 中的内存限制</p>
-<p>跑了4小时还未有crash，在解决</p>
+        <p><strong>Fuzzing101 Exercise1</strong></p>
+<p>CVE-2019-13288 in XPDF 3.02 （infinite recursion）无限递归<br> <span id="more"></span></p>
+<p>CVE-2019-13288 ：是一个漏洞，它可能会通过精心制作的文件导致无限递归。由于程序中每个被调用的函数都会在栈上分配一个栈帧，如果一个函数被递归调用这么多次，就会导致栈内存耗尽和程序崩溃。因此，远程攻击者可以利用它进行 DoS 攻击。</p>
+<p><strong>目的：</strong></p>
+<ul>
+<li><p>使用检测编译目标应用程序</p>
+</li>
+<li><p>运行模糊器（afl-fuzz）</p>
+</li>
+<li><p>使用调试器 (GDB) 对崩溃进行分类</p>
+</li>
+<li><p>在 XPDF 3.02 中找到 CVE-2019-13288 的崩溃&#x2F;PoC。</p>
+</li>
+</ul>
+<h3 id="1-环境依赖"><a href="#1-环境依赖" class="headerlink" title="1. 环境依赖"></a>1. 环境依赖</h3><p>系统：Ubuntu 20.04.2 LTS（用22的会有比较多问题）</p>
+<p>安装make，gcc</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install build-essential</span><br></pre></td></tr></table></figure>
+
+<p>安装AFL++</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//安装依赖项</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install -y build-essential python3-dev automake git flex bison libglib2.0-dev libpixman-1-dev python3-setuptools</span><br><span class="line">sudo apt-get install -y lld-11 llvm-11 llvm-11-dev clang-11 || sudo apt-get install -y lld llvm llvm-dev clang </span><br><span class="line">sudo apt-get install -y gcc-$(gcc --version|head -n1|sed &#x27;s/.* //&#x27;|sed &#x27;s/\..*//&#x27;)-plugin-dev libstdc++-$(gcc --version|head -n1|sed &#x27;s/.* //&#x27;|sed &#x27;s/\..*//&#x27;)-dev</span><br><span class="line"></span><br><span class="line">//构建AFL++</span><br><span class="line">git clone https://github.com/AFLplusplus/AFLplusplus &amp;&amp; cd AFLplusplus</span><br><span class="line">export LLVM_CONFIG=&quot;llvm-config-11&quot;</span><br><span class="line">make distrib</span><br><span class="line">sudo make install</span><br><span class="line"></span><br><span class="line">//执行afl-fuzz，查看是否安装成功</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-实验流程"><a href="#2-实验流程" class="headerlink" title="2. 实验流程"></a>2. 实验流程</h3><p>首先为要进行模糊测试的项目创建一个新目录：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd $HOME</span><br><span class="line">mkdir fuzzing_xpdf &amp;&amp; cd fuzzing_xpdf/</span><br></pre></td></tr></table></figure>
+
+<p>下载 Xpdf 3.02：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://dl.xpdfreader.com/old/xpdf-3.02.tar.gz</span><br><span class="line">tar -xvzf xpdf-3.02.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>构建 Xpdf：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd xpdf-3.02</span><br><span class="line">sudo apt update &amp;&amp; sudo apt install -y build-essential gcc</span><br><span class="line">./configure --prefix=&quot;$HOME/fuzzing_xpdf/install/&quot;</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>配置configure时有各种环境变量需要设置，比较常用的有</p>
+<pre><code>AS：汇编程序名称
+CC：C编译器名称
+CXX：C++编译器名称
+CPP：C预编译器名称
+**FLAGS：**为不同编译器名称，表示对应编译器的参数
+LD：链接器名称
+AR：归档器archiver名称
+RANLIB：符号表添加器名称
+</code></pre>
+<p>获取样本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd $HOME/fuzzing_xpdf</span><br><span class="line">mkdir pdf_examples &amp;&amp; cd pdf_examples</span><br><span class="line">wget https://github.com/mozilla/pdf.js-sample-files/raw/master/helloworld.pdf</span><br><span class="line">wget http://www.africau.edu/images/default/sample.pdf</span><br><span class="line">wget https://www.melbpc.org.au/wp-content/uploads/2017/10/small-example-pdf-file.pdf</span><br></pre></td></tr></table></figure>
+
+<p>使用以下命令测试 pdfinfo 二进制文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$HOME/fuzzing_xpdf/install/bin/pdfinfo -box -meta $HOME/fuzzing_xpdf/pdf_examples/helloworld.pdf</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../img/fuzzing101_execise1_1.png"></p>
+<p>使用 AFL 的编译器编译源代码</p>
+<p>先删除原先的安装，重新编译安装库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rm -r $HOME/fuzzing_xpdf/install</span><br><span class="line">cd $HOME/fuzzing_xpdf/xpdf-3.02/</span><br><span class="line">make clean</span><br><span class="line"></span><br><span class="line">export LLVM_CONFIG=&quot;llvm-config-11&quot;</span><br><span class="line">CC=$HOME/AFLplusplus/afl-clang-fast CXX=$HOME/AFLplusplus/afl-clang-fast++ ./configure --prefix=&quot;$HOME/fuzzing_xpdf/install/&quot;</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>运行fuzzer：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">afl-fuzz -i $HOME/fuzzing_xpdf/pdf_examples/ -o $HOME/fuzzing_xpdf/out/ -s 123 -- $HOME/fuzzing_xpdf/install/bin/pdftotext @@ $HOME/fuzzing_xpdf/output</span><br></pre></td></tr></table></figure>
+
+<pre><code>-i 表示输入示例的目录
+
+-o 表示 AFL + + 将存储的变异文件的目录
+
+-s 表示要使用的静态随机种子
+
+--之后是目标应用程序运行命令
+
+@@ 是占位符目标的命令行，AFL 将用每个输入文件名替换
+</code></pre>
+<p>运行成功后，等待crash出现<br><img src="/../img/fuzzing101_execise1_3.png"><br>可以在$HOME&#x2F;fuzzing_xpdf&#x2F;out&#x2F; 目录中找到这些崩溃文件。</p>
+<h3 id="3-动态调试"><a href="#3-动态调试" class="headerlink" title="3. 动态调试"></a>3. 动态调试</h3><p>在$HOME&#x2F;fuzzing_xpdf&#x2F;out&#x2F;目录下找到 crash 对应的文件。文件名类似于id:000000,sig:11,src:000390,time:103613,execs:71732,op:havoc,rep:16</p>
+<p>将此文件作为输入传递给 pdftotext</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$HOME/fuzzing_xpdf/install/bin/pdftotext id:000000,sig:11,src:001194,time:448368,execs:160443,op:havoc,rep:8 $HOME/fuzzing_xpdf/output</span><br></pre></td></tr></table></figure>
+
+<p>它将导致段错误segmentation fault并导致程序崩溃。<br><img src="/../img/fuzzing101_execise1_6.png"></p>
+<p><strong>调试</strong></p>
+<p>使用 gdb 找出程序因该输入而崩溃的原因。</p>
+<p>首先使用调试信息重建 Xpdf 来获得符号堆栈跟踪：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">rm -r $HOME/fuzzing_xpdf/install</span><br><span class="line">cd $HOME/fuzzing_xpdf/xpdf-3.02/</span><br><span class="line">make clean</span><br><span class="line">CFLAGS=&quot;-g -O0&quot; CXXFLAGS=&quot;-g -O0&quot; ./configure --prefix=&quot;$HOME/fuzzing_xpdf/install/&quot;</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>然后使用GDB，输入run</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gdb --args $HOME/fuzzing_xpdf/install/bin/pdftotext $HOME/fuzzing_xpdf/out/default/crashes/id:000000,sig:11,src:001194,time:448368,execs:160443,op:havoc,rep:8 $HOME/fuzzing_xpdf/output</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../img/fuzzing101_execise1_4.png"><br>然后输入bt回溯查看栈帧<br><img src="/../img/fuzzing101_execise1_5.png"></p>
+<p>报错信息Program received signal SIGSEGV, Segmentation fault，存在内存泄漏</p>
+<p>有许多次Parser::getObj的调用，像无限递归</p>
+<p>根据报错从xpdf&#x2F;Parse.cc 94行的makeStream调用发现问题，无限递归<br><img src="/../img/fuzzing101_execise1_7.png"></p>
+<h3 id="4-漏洞修复"><a href="#4-漏洞修复" class="headerlink" title="4. 漏洞修复"></a>4. 漏洞修复</h3><p>下载xpdf4.02源码对比，加了个变量，记录了循环次数，超一定次数就停止</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://dl.xpdfreader.com/old/xpdf-4.02.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../img/fuzzing101_execise1_8.png"></p>
+<h3 id="5-报错解决"><a href="#5-报错解决" class="headerlink" title="5. 报错解决"></a>5. 报错解决</h3><p><img src="/../img/fuzzing101_execise1_9.png"><br>切换到root用户输入echo core &gt;&#x2F;proc&#x2F;sys&#x2F;kernel&#x2F;core_pattern后，再执行一次<br><img src="/../img/fuzzing101_execise1_11.png"><br>在最后加上–host&#x3D;x86_63</p>
 
       
 
@@ -307,7 +386,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://laneyyu.github.io/2023/07/23/Fuzzing101-Execise3/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://laneyyu.github.io/2023/07/18/Fuzzing101-Exercise1/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -321,18 +400,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2023/07/23/Tips-for-Writing-Technical-Papers/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2023/07/21/Fuzzing101-Exercise2/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Tips_for_Writing_Technical_Papers
+          Fuzzing101-Exercise2
         
       </div>
     </a>
   
   
-    <a href="/2023/07/21/Fuzzing101-Execise2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Fuzzing101-Execise2</div>
+    <a href="/2023/07/08/how-to-give-a-good-research-talk/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">How_to_give_a_good_research_talk</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -359,7 +438,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Download-and-build-your-target"><span class="toc-number">1.</span> <span class="toc-text">Download and build your target</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A7%8D%E5%AD%90%E8%AF%AD%E6%96%99%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-number">2.</span> <span class="toc-text">种子语料库的创建</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%AF%E7%94%A8-ASan-%E8%BF%9B%E8%A1%8C%E6%9E%84%E5%BB%BA"><span class="toc-number">3.</span> <span class="toc-text">启用 ASan 进行构建</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A8%A1%E7%B3%8A%E6%B5%8B%E8%AF%95"><span class="toc-number">4.</span> <span class="toc-text">模糊测试</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%8E%AF%E5%A2%83%E4%BE%9D%E8%B5%96"><span class="toc-number">1.</span> <span class="toc-text">1. 环境依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%9E%E9%AA%8C%E6%B5%81%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">2. 实验流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95"><span class="toc-number">3.</span> <span class="toc-text">3. 动态调试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%BC%8F%E6%B4%9E%E4%BF%AE%E5%A4%8D"><span class="toc-number">4.</span> <span class="toc-text">4. 漏洞修复</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3"><span class="toc-number">5.</span> <span class="toc-text">5. 报错解决</span></a></li></ol>
                     </div>
                 </span>
             </div>

@@ -6,14 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://laneyyu.github.io">
-  <title>Fuzzing101-Execise2 | Laney</title>
+  <title>Fuzzing101-Exercise2 | Laney</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Fuzzing101 Execise2 CVE-2009-3895 （heap-based buffer overflow）and CVE-2012-2836 （Out-of-bounds Read）in libexif 0.6.14">
+  <meta name="description" content="Fuzzing101 Exercise2 CVE-2009-3895 （heap-based buffer overflow）and CVE-2012-2836 （Out-of-bounds Read）in libexif 0.6.14">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Fuzzing101-Execise2">
-<meta property="og:url" content="https://laneyyu.github.io/2023/07/21/Fuzzing101-Execise2/index.html">
+<meta property="og:title" content="Fuzzing101-Exercise2">
+<meta property="og:url" content="https://laneyyu.github.io/2023/07/21/Fuzzing101-Exercise2/index.html">
 <meta property="og:site_name" content="Laney">
-<meta property="og:description" content="Fuzzing101 Execise2 CVE-2009-3895 （heap-based buffer overflow）and CVE-2012-2836 （Out-of-bounds Read）in libexif 0.6.14">
+<meta property="og:description" content="Fuzzing101 Exercise2 CVE-2009-3895 （heap-based buffer overflow）and CVE-2012-2836 （Out-of-bounds Read）in libexif 0.6.14">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise2_1.png">
 <meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise2_2.png">
@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise2_5.png">
 <meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise2_6.png">
 <meta property="article:published_time" content="2023-07-21T15:51:02.000Z">
-<meta property="article:modified_time" content="2023-07-22T16:44:52.184Z">
+<meta property="article:modified_time" content="2023-07-24T08:22:07.864Z">
 <meta property="article:tag" content="fuzzing101">
 <meta property="article:tag" content="实验报告">
 <meta name="twitter:card" content="summary">
@@ -63,10 +63,10 @@
 			<img src="/assets/img/touxiang.jpg">
 			
 		<hgroup>
-		  <h1 class="header-author"><a href="/"></a></h1>
+		  <h1 class="header-author"><a href="/">Laney</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">盲人摸象</p>
+		<p class="header-subtitle">俺是盲人，在找大象</p>
 		
 
 		<nav class="header-menu">
@@ -117,10 +117,10 @@
 				<img src="/assets/img/touxiang.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author"></h1>
+			  <h1 class="header-author js-header-author">Laney</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>盲人摸象<i class="icon icon-quo-right"></i></p>
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>俺是盲人，在找大象<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -165,19 +165,19 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Fuzzing101-Execise2" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Fuzzing101-Exercise2" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Fuzzing101-Execise2
+      Fuzzing101-Exercise2
     </h1>
   
 
         
-        <a href="/2023/07/21/Fuzzing101-Execise2/" class="archive-article-date">
+        <a href="/2023/07/21/Fuzzing101-Exercise2/" class="archive-article-date">
   	<time datetime="2023-07-21T15:51:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-21</time>
 </a>
         
@@ -221,7 +221,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>Fuzzing101 Execise2</strong></p>
+        <p><strong>Fuzzing101 Exercise2</strong></p>
 <p>CVE-2009-3895 （heap-based buffer overflow）and CVE-2012-2836 （Out-of-bounds Read）in libexif 0.6.14<br> <span id="more"></span></p>
 <h1 id="安装调试目标"><a href="#安装调试目标" class="headerlink" title="安装调试目标"></a>安装调试目标</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/libexif/libexif/archive/refs/tags/libexif-0_6_14-release.tar.gz</span><br><span class="line">tar -xzvf libexif-0_6_14-release.tar.gz</span><br></pre></td></tr></table></figure>
 <p>安装依赖</p>
@@ -330,7 +330,7 @@ https://github.com/libexif/libexif/commit/00986f6fa979fe810b46e376a462c581f9746e
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://laneyyu.github.io/2023/07/21/Fuzzing101-Execise2/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://laneyyu.github.io/2023/07/21/Fuzzing101-Exercise2/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -344,18 +344,18 @@ https://github.com/libexif/libexif/commit/00986f6fa979fe810b46e376a462c581f9746e
   
 <nav id="article-nav">
   
-    <a href="/2023/07/23/Fuzzing101-Execise3/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2023/07/23/Fuzzing101-Exercise3/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Fuzzing101-Execise3
+          Fuzzing101-Exercise3
         
       </div>
     </a>
   
   
-    <a href="/2023/07/18/Fuzzing101-Execise1/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Fuzzing101_Execise1</div>
+    <a href="/2023/07/18/Fuzzing101-Exercise1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Fuzzing101_Exercise1</div>
       <i class="icon-circle-right"></i>
     </a>
   
