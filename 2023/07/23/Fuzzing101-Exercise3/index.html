@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="https://laneyyu.github.io">
   <title>Fuzzing101-Exercise3 | Laney</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Exercise 3 - tcpdump(使用ASAN) CVE-2017-13028 in TCPdump 4.9.2（Out-of-bounds Read）">
+  <meta name="description" content="Exercise 3 - tcpdump(使用ASAN)CVE-2017-13028 in TCPdump 4.9.2（Out-of-bounds Read）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Fuzzing101-Exercise3">
 <meta property="og:url" content="https://laneyyu.github.io/2023/07/23/Fuzzing101-Exercise3/index.html">
 <meta property="og:site_name" content="Laney">
-<meta property="og:description" content="Exercise 3 - tcpdump(使用ASAN) CVE-2017-13028 in TCPdump 4.9.2（Out-of-bounds Read）">
+<meta property="og:description" content="Exercise 3 - tcpdump(使用ASAN)CVE-2017-13028 in TCPdump 4.9.2（Out-of-bounds Read）">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise3_1.png">
 <meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise3_2.png">
 <meta property="article:published_time" content="2023-07-23T05:07:21.000Z">
-<meta property="article:modified_time" content="2023-07-24T12:51:49.773Z">
+<meta property="article:modified_time" content="2023-07-24T14:09:52.175Z">
 <meta property="article:tag" content="fuzzing101">
 <meta property="article:tag" content="实验报告">
 <meta name="twitter:card" content="summary">
@@ -72,7 +72,7 @@
 	        
 				<li><a href="/tags/%E7%AC%94%E8%AE%B0">笔记</a></li>
 	        
-				<li><a href="/tags/fuzzing101">fuzzing101</a></li>
+				<li><a href="/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A">fuzzing101</a></li>
 	        
 			</ul>
 		</nav>
@@ -150,7 +150,7 @@
 		        
 					<li style="width: 33.333333333333336%"><a href="/tags/%E7%AC%94%E8%AE%B0">笔记</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/fuzzing101">fuzzing101</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A">fuzzing101</a></li>
 		        
 				</ul>
 			</nav>
@@ -221,8 +221,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Exercise 3 - tcpdump(使用ASAN)</p>
-<p>CVE-2017-13028 in TCPdump 4.9.2（Out-of-bounds Read） <span id="more"></span></p>
+        <p>Exercise 3 - tcpdump(使用ASAN)<br>CVE-2017-13028 in TCPdump 4.9.2（Out-of-bounds Read） <span id="more"></span></p>
 <h1 id="下载和构建"><a href="#下载和构建" class="headerlink" title="下载和构建"></a>下载和构建</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">cd $HOME</span><br><span class="line">mkdir fuzzing_tcpdump &amp;&amp; cd fuzzing_tcpdump/</span><br><span class="line">//下载 tcpdump-4.9.2.tar.gz</span><br><span class="line">wget https://github.com/the-tcpdump-group/tcpdump/archive/refs/tags/tcpdump-4.9.2.tar.gz</span><br><span class="line">tar -xzvf tcpdump-4.9.2.tar.gz</span><br><span class="line"></span><br><span class="line">//下载libpcap，这是TCPdump需要的跨平台库。</span><br><span class="line">wget https://github.com/the-tcpdump-group/libpcap/archive/refs/tags/libpcap-1.8.0.tar.gz</span><br><span class="line">tar -xzvf libpcap-1.8.0.tar.gz</span><br><span class="line"></span><br><span class="line">//需要重命名，否则tcpdump 找不到本地路径</span><br><span class="line">mv libpcap-libpcap-1.8.0/ libpcap-1.8.0</span><br><span class="line"></span><br><span class="line">//构建并安装 libpcap</span><br><span class="line">cd libpcap-1.8.0/</span><br><span class="line">./configure --enable-shared=no</span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">//构建并安装tcpdump</span><br><span class="line">cd tcpdump-tcpdump-4.9.2/</span><br><span class="line">./configure --prefix=&quot;$HOME/fuzzing101/fuzzing_tcpdump/install/&quot;</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"></span><br><span class="line">//测试是否正常</span><br><span class="line">$HOME/fuzzing101/fuzzing_tcpdump/install/sbin/tcpdump -h</span><br></pre></td></tr></table></figure>
 <p><img src="/../img/fuzzing101_execise3_1.png"></p>
 <h1 id="种子语料库的创建"><a href="#种子语料库的创建" class="headerlink" title="种子语料库的创建"></a>种子语料库的创建</h1><p>可以在“.&#x2F;tests”文件夹中找到很多.pcacp示例，使用以下命令运行这些 .pcap 文件</p>

@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="https://laneyyu.github.io">
   <title>Fuzzing101-Exercise2 | Laney</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Fuzzing101 Exercise2 CVE-2009-3895 （heap-based buffer overflow）and CVE-2012-2836 （Out-of-bounds Read）in libexif 0.6.14">
+  <meta name="description" content="Fuzzing101 Exercise2CVE-2009-3895 （heap-based buffer overflow）and CVE-2012-2836 （Out-of-bounds Read）in libexif 0.6.14">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Fuzzing101-Exercise2">
 <meta property="og:url" content="https://laneyyu.github.io/2023/07/21/Fuzzing101-Exercise2/index.html">
 <meta property="og:site_name" content="Laney">
-<meta property="og:description" content="Fuzzing101 Exercise2 CVE-2009-3895 （heap-based buffer overflow）and CVE-2012-2836 （Out-of-bounds Read）in libexif 0.6.14">
+<meta property="og:description" content="Fuzzing101 Exercise2CVE-2009-3895 （heap-based buffer overflow）and CVE-2012-2836 （Out-of-bounds Read）in libexif 0.6.14">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise2_1.png">
 <meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise2_2.png">
@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise2_5.png">
 <meta property="og:image" content="https://laneyyu.github.io/img/fuzzing101_execise2_6.png">
 <meta property="article:published_time" content="2023-07-21T15:51:02.000Z">
-<meta property="article:modified_time" content="2023-07-24T12:51:58.651Z">
+<meta property="article:modified_time" content="2023-07-24T14:10:21.030Z">
 <meta property="article:tag" content="fuzzing101">
 <meta property="article:tag" content="实验报告">
 <meta name="twitter:card" content="summary">
@@ -76,7 +76,7 @@
 	        
 				<li><a href="/tags/%E7%AC%94%E8%AE%B0">笔记</a></li>
 	        
-				<li><a href="/tags/fuzzing101">fuzzing101</a></li>
+				<li><a href="/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A">fuzzing101</a></li>
 	        
 			</ul>
 		</nav>
@@ -154,7 +154,7 @@
 		        
 					<li style="width: 33.333333333333336%"><a href="/tags/%E7%AC%94%E8%AE%B0">笔记</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/fuzzing101">fuzzing101</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A">fuzzing101</a></li>
 		        
 				</ul>
 			</nav>
@@ -195,7 +195,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text" style="font-size: 14px;color: grey">  字数统计:</span>
         <!--这里样式可以自己定制-->
-        <span class="post-count" style="font-size: 14px;color: grey">718字</span>
+        <span class="post-count" style="font-size: 14px;color: grey">717字</span>
       </span>
     </span>
 
@@ -225,8 +225,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>Fuzzing101 Exercise2</strong></p>
-<p>CVE-2009-3895 （heap-based buffer overflow）and CVE-2012-2836 （Out-of-bounds Read）in libexif 0.6.14<span id="more"></span></p>
+        <p><strong>Fuzzing101 Exercise2</strong><br>CVE-2009-3895 （heap-based buffer overflow）and CVE-2012-2836 （Out-of-bounds Read）in libexif 0.6.14<span id="more"></span></p>
 <h1 id="安装调试目标"><a href="#安装调试目标" class="headerlink" title="安装调试目标"></a>安装调试目标</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/libexif/libexif/archive/refs/tags/libexif-0_6_14-release.tar.gz</span><br><span class="line">tar -xzvf libexif-0_6_14-release.tar.gz</span><br></pre></td></tr></table></figure>
 <p>安装依赖</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install</span><br></pre></td></tr></table></figure>
