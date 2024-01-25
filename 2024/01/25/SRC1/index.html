@@ -6,30 +6,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://laneyyu.github.io">
-  <title>AURC:Detecting Errors in Program Code and Documentation | Laney</title>
+  <title>SRC漏洞挖掘笔记 | Laney</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="《AURC：检测程序代码和文档中的错误》">
+  <meta name="description" content="什么是SRCSecurity Response Center 安全应急响应中心">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AURC:Detecting Errors in Program Code and Documentation">
-<meta property="og:url" content="https://laneyyu.github.io/2023/11/08/AURC/index.html">
+<meta property="og:title" content="SRC漏洞挖掘笔记">
+<meta property="og:url" content="https://laneyyu.github.io/2024/01/25/SRC1/index.html">
 <meta property="og:site_name" content="Laney">
-<meta property="og:description" content="《AURC：检测程序代码和文档中的错误》">
+<meta property="og:description" content="什么是SRCSecurity Response Center 安全应急响应中心">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://laneyyu.github.io/img/6163052.png">
-<meta property="og:image" content="https://laneyyu.github.io/img/231106202919.png">
-<meta property="og:image" content="https://laneyyu.github.io/img/106203308.png">
-<meta property="og:image" content="https://laneyyu.github.io/img/107184127.png">
-<meta property="og:image" content="https://laneyyu.github.io/img/31107201526.png">
-<meta property="og:image" content="https://laneyyu.github.io/img/08145410.png">
-<meta property="og:image" content="https://laneyyu.github.io/img/8152909.png">
-<meta property="og:image" content="https://laneyyu.github.io/img/108160317.png">
-<meta property="og:image" content="https://laneyyu.github.io/img/0231108172639.png">
-<meta property="og:image" content="https://laneyyu.github.io/img/8173737.png">
-<meta property="article:published_time" content="2023-11-08T13:55:38.000Z">
-<meta property="article:modified_time" content="2024-01-24T14:12:08.985Z">
-<meta property="article:tag" content="文献悦读">
+<meta property="og:image" content="https://laneyyu.github.io/img/40125211151.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/0125191615.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/125193242.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/0125195916.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/25201105.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/0125201229.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/10125201328.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/125202307.png">
+<meta property="article:published_time" content="2024-01-25T13:45:25.000Z">
+<meta property="article:modified_time" content="2024-01-25T13:48:31.417Z">
+<meta property="article:tag" content="漏洞挖掘">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://laneyyu.github.io/img/6163052.png">
+<meta name="twitter:image" content="https://laneyyu.github.io/img/40125211151.png">
   
     <link rel="alternative" href="/atom.xml" title="Laney" type="application/atom+xml">
   
@@ -178,20 +176,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-AURC" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-SRC1" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      AURC:Detecting Errors in Program Code and Documentation
+      SRC漏洞挖掘笔记
     </h1>
   
 
         
-        <a href="/2023/11/08/AURC/" class="archive-article-date">
-  	<time datetime="2023-11-08T13:55:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-08</time>
+        <a href="/2024/01/25/SRC1/" class="archive-article-date">
+  	<time datetime="2024-01-25T13:45:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-25</time>
 </a>
         
 
@@ -204,7 +202,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text" style="font-size: 14px;color: grey">  字数统计:</span>
         <!--这里样式可以自己定制-->
-        <span class="post-count" style="font-size: 14px;color: grey">2.3k字</span>
+        <span class="post-count" style="font-size: 14px;color: grey">1.8k字</span>
       </span>
     </span>
 
@@ -213,7 +211,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text" style="font-size: 14px;color: grey">  阅读时长:</span>
-        <span class="post-count" style="font-size: 14px;color: grey">8分钟</span>
+        <span class="post-count" style="font-size: 14px;color: grey">6分钟</span>
       </span>
     </span>
 </div>
@@ -234,80 +232,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>《AURC：检测程序代码和文档中的错误》<br> <span id="more"></span></p>
-<p>程序代码和文档中的错误检测<br>先前的研究，通过广泛的代码或文档引导分析，发现漏洞希望大<br>先进技术局限性：<br>（i）他们假设文档是正确的，并将违反文档的代码视为错误，因此如果API有缺陷的文档或没有文档，则无法发现文档的缺陷和代码的错误。<br>（ii） 他们利用多数投票来判断不一致的代码片段，并将异常视为错误，因此无法应对正确使用很少或所有用例都是错误的情况。</p>
-<p><img src="/../img/6163052.png"><br>2<del>3 行显示了 OpenSSL 文档 中对 EVP_SealInit（） 的描述。通过声明在发生错误时返回零，该文档指导软件开发人员进行返回检查，并在调用 EVP_SealInit（） 时为返回的零定义错误处理代码。<br>17 行对 EVP_SealInit（） 的调用。函数 openssl_seal 是调用方。<br>5</del>13 行部分显示了 EVP_SealInit（） 的源代码，称为被调用方。因此，可以参考被调用方、文档或其他调用方来了解 API 的用法，我们称它们为 API 用法参考 （<strong>AUR</strong>）。<br>EVP_SealInit（） 作为加密的初始化函数，在发生错误时返回 0 和 -1。但是，PHP 解释器 中的调用者和 OpenSSL 的文档都省略了负值。被调用方与调用方和文档不一致，导致对 PHP 解释器的拒绝服务 （DoS） 攻击 （CVE-2017-11144）。</p>
-<p>最先进的方法发现许多基于一致性检查的潜在漏洞<br>三个主要问题：</p>
-<ul>
-<li><p>文档涵盖的API数量有限，许多API没有记录在文档里。文档可能包含缺陷</p>
-</li>
-<li><p>多数表决（投票）可能无法执行或不正确。它仅限于多次调用的API。</p>
-</li>
-<li><p>在上下文中可能不存在正确的用法<br>一些工作试图基于类似的函数上下文来检测错误。例如，它们在同一函数中使用相似的执行路径。但是，它要求上下文中存在正确的用法。</p>
-<p>AUR 中提取使用情况和推断正确性方面存在以下<strong>挑战</strong>。</p>
-<ul>
-<li>错综复杂的数据流使得很难预测被调用方的使用情况</li>
-<li>文档和代码不能直接比较（要将文档转换为数字，数字及其范围、词汇会降低转换的准确性）</li>
-<li>当发生不一致时确定哪个是有缺陷的是一个难点。</li>
-</ul>
-</li>
-</ul>
-<p>背景<br>许多研究发现代码库中的缺陷，有以下几类</p>
-<ul>
-<li>文档&#x2F;注释分析</li>
-<li>代码分析</li>
-</ul>
-<p>我们强调以下缺陷：</p>
-<ul>
-<li>文件缺陷</li>
-<li>调用者的缺陷，和对应的文件是有误的或者不存在的</li>
-<li>被调用者的缺陷</li>
-<li>调用者的缺陷，多数投票不适用，例如多数的这些用例是错误的，或者用例太少无法执行多数投票</li>
-</ul>
-<p>我们选择上述研究作为靶点，并评估它们是否能够应对这些缺陷。结果如表1所示。AURC 处理这四种类型的缺陷，而大多数工具只能处理两种类型的缺陷</p>
-<p><img src="/../img/231106202919.png"></p>
-<h4 id="设计"><a href="#设计" class="headerlink" title="设计"></a>设计</h4><h5 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h5><p>AURC 之所以表现出色，是因为它能够交叉检查三个 AUR</p>
-<p>“交叉检查”是一种常见的软件测试技术。它的主要目的是在不同的测试用例、数据集或设置之间进行交叉比较，从而发现潜在的问题和错误。</p>
-<p><img src="/../img/106203308.png"><br>CBP &#x3D; 上下文相关的回溯预测。分析被调用方（API源代码），得出返回值的结论<br>CoPS &#x3D; 截止点集。收集调用方的返回检查，捕获 if 语句的条件，并存储比较的操作数和符号<br>RDT &#x3D; 范围推导树。根据 CoPS 中的条件推断返回值的范围</p>
-<p>两个模块负责分析文档：预训练分类器过滤掉与返回值相关的句子;<br>映射表将它们转换为数字，以便与被调用方和调用方的用法进一步比较。</p>
-<p>分析完AURs后，AURC 执行交叉检查以定位不一致并将其发送到正确性推理，其中包含四个规则来推断有缺陷的 AUR。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“交叉检查”：软件测试技术。主要目的是在不同的测试用例、数据集或设置之间进行交叉比较，从而发现潜在的问题和错误。</span><br></pre></td></tr></table></figure>
-<p>BN_bn2binpad（） 将参数 a 的绝对值转换为大端形式，代码片段和文档是从名为 OpenSSL 的流行库中提取的。<br><img src="/../img/107184127.png"><br>AURC 通过 CBP 推断其返回值可以是 -1 或 bn2binpad（）。类似，推断出 bn2binpad（） 的返回值包含 -1 和 &gt;0。<br>取交，BN_bn2binpad（） 的返回值分别为 -1 和 &gt;0。</p>
-<p>为了分析文档，AURC 首先通过微调的基于模型的分类器挑选出描述 BN_bn2binpad（） 返回值的句子。所选句子包括一个短语（字节数）和一个数字 （-1） 来指示返回值。然后，映射表将短语映射到范围 &gt;0。因此，BN_bn2binpad（） 的返回值为 -1 和 &gt;0。AURC 收集 if 语句的条件来分析调用方，并挑选出包含与被调用方返回值进行比较的条件来构造 CoPS，如case 1-4 所示。case3 利用一元运算符 （！） 进行返回检查。RDT 进一步得出结论，基于此return检查，BN_bn2binpad（） 的返回值包含零和非零。它们与被调用方和文档的结果 -1 和 &gt;0不一样</p>
-<h5 id="被调用方分析"><a href="#被调用方分析" class="headerlink" title="被调用方分析"></a>被调用方分析</h5><p>值范围分析：会降低效率，也可能会有错误</p>
-<p><img src="/../img/31107201526.png"></p>
-<p>解决办法：上下文敏感回溯预测（CBP），它反向（backward）预测函数的返回值<br>基于三个观察结果：（i）我们可以通过分析调用方前面调用的函数并用它们的返回值替换调用，将嵌套调用转换为过程内问题。（ii）值范围分析利用约束推导规则提取约束，以构建描述变量范围约束的约束图。同样，我们总结了返回变量的三种类型的路径约束，它们可以通过排除不合理的返回值来减少误报。（iii）大多数返回值可以通过从返回语句回溯某些语句来预测，而不是从前到后分析整个函数。</p>
-<p>CBP包括三个阶段：</p>
-<ul>
-<li>函数顺序分析决策。用分析调用方前面调用的函数并用它们的返回值替换调用（Backward）</li>
-<li>路径约束提取。数据流分析（if语句约束的条件，下标约束，循环计数约束，如i）</li>
-<li>回溯预测。大多数返回值可以通过从返回语句回溯某些语句来预测</li>
-</ul>
-<p><img src="/../img/08145410.png"></p>
-<h5 id="调用者分析"><a href="#调用者分析" class="headerlink" title="调用者分析"></a>调用者分析</h5><p>返回检查<br>认为有两种返回（&lt;0和&gt;&#x3D;0）<br>AURC收集调用的所有返回检查，构建截止点集（CoPS）<br>CoPS中的元素的格式为（被调用者、符号、值、位置），如：<br>(gen_unique_name, &lt;, 0,__get_cur_name_and_parent:5)</p>
-<p><img src="/../img/8152909.png"><br>代码风格的多样性阻碍CoPS构建。如第3行和第4行都检查第2行中的调用。如果AURC在推导范围时只考虑其中一个检查，误报率将很高。<br>AURC构建了基于数据依赖图（DDG）的CoPS来解决上述问题。进行遍历，如果节点包含直接比较，如If（gen_unique_name（）＜0），AURC可以直接转换并保存在CoPS中。</p>
-<p><strong>构建RDT</strong><br>构建范围推导树，来推断返回检查的返回值范围。<br><img src="/../img/108160317.png"></p>
-<h5 id="文档分析"><a href="#文档分析" class="headerlink" title="文档分析"></a>文档分析</h5><p>从文档中提取返回值进行比较是不重要</p>
-<ul>
-<li>缺乏严格的书写规范。有人用情感分析</li>
-<li>不能自动进行比较</li>
-</ul>
-<p>针对第一点：<br>基于嵌入的方式识别。NLP中的预训练模型可以将自然语言中的句子转换为向量嵌入。<br>消除了对特定规则的依赖。</p>
-<p>AURC利用BERT进行分类。手动标记的数据集对分类器进行了微调，该数据集包含文档中的句子。<br>实验结果：展示它处理基于代码的迁移的能力。分类器平均达到95.5%的准确率和94.3%的召回率。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BERT代表“Bidirectional Encoder Representations from Transformers”，是一种基于Transformer架构的自然语言处理模型。</span><br></pre></td></tr></table></figure>
-
-<p><strong>映射表</strong><br><img src="/../img/0231108172639.png"></p>
-<h4 id="缺陷检测"><a href="#缺陷检测" class="headerlink" title="缺陷检测"></a>缺陷检测</h4><p>在上述步骤中，AURC从三个AUR中提取用法，并将其转换为数字形式。AURC然后对这三个AUR进行交叉检查，以发现不一致之处，即代码或文档中的潜在缺陷。</p>
-<p>确定哪个AUR是正确的是不重要的。<br>之前的研究检测不一致性</p>
-<ul>
-<li>缺乏得出有缺陷的结论的方法</li>
-<li>仅限于一个或两个AUR</li>
-</ul>
-<p>AURC利用了所有三个AUR，解决不一致的四条规则：<br><img src="/../img/8173737.png"></p>
-<h3 id="贡献"><a href="#贡献" class="headerlink" title="贡献"></a>贡献</h3><ul>
-<li>新技术，通过交叉检查 AUR（文档、调用方和被调用方）来自动检测代码错误和文档缺陷。</li>
-<li>实施和发现，发现了 529 个新错误和 224 个新文档错误，</li>
-</ul>
+        <h1 id="什么是SRC"><a href="#什么是SRC" class="headerlink" title="什么是SRC"></a>什么是SRC</h1><p>Security Response Center 安全应急响应中心 <span id="more"></span><br>市面上存在了各种厂商的安全应急响应中心<br><img src="/../img/40125211151.png"><br>1、读平台的漏洞评分标准<br>了解你所要提交的SRC平台规则和要求，不同的平台给出的评分标准不同<br>如某网站根本不收反射型xss漏洞<br>2、详细阅读测试范围，不要超出，会有非法测试的风险！<br>SRC平台会有规定的众测任务，有域名限制，超出的也不会给漏洞审核的，⽽且存在的<br>非法测试的风险这里需要切记！<br>3、遵循安全测试规范，比如sql注入会有要求，哪些东西不能读取，最多读取多少条</p>
+<h1 id="主要步骤"><a href="#主要步骤" class="headerlink" title="主要步骤"></a>主要步骤</h1><h2 id="第一步-信息收集"><a href="#第一步-信息收集" class="headerlink" title="第一步 信息收集"></a>第一步 信息收集</h2><p>在详细了解了域名范围后，就要对旗下的域名范围进行信息收集<br>可以找一些⼀些在线的子域名收集工具，以及子域名挖掘机（软件类的），在各大安全社区论坛都有相关文章可以进行学习，如安全客</p>
+<p>但信息收集不是简简单单的子域名收集，更重要的是网段，以及扩展域名，那么扩展域名怎么找呢？<br>通常通过域名whois来通过注册人、联系邮箱进行查找，第⼆就是html中的代码。ip段的收集不能说收集完了就了事了，而是需要通过IP分布来确定核心段、<br>边缘段、云服段等等，并且需要知道目标厂商开发喜欢使用什么框架，至于怎么去找使用框架可以查看目标厂商的招聘⽹站看看，说不定有惊喜，在边缘段中⼀般会存在N台测试机器，测试机器是我们最好的突破口。因为测试机器往往不会关闭debug、并且登录账号通常为弱口令</p>
+<h2 id="第二步-漏洞挖掘"><a href="#第二步-漏洞挖掘" class="headerlink" title="第二步 漏洞挖掘"></a>第二步 漏洞挖掘</h2><p>参照着评定规则进行漏洞的挖掘。<br>常见漏洞类型:<br>XSS、SQL注⼊、CSRF、权限绕过、文件上传、弱口令、代码执行等等</p>
+<h3 id="漏洞扫描器"><a href="#漏洞扫描器" class="headerlink" title="漏洞扫描器"></a>漏洞扫描器</h3><p>关于漏洞挖掘过程中的扫描器使用问题：<br>网上有很多扫描器的存在，例如AWVS APPscan 等重型扫描器，但是很多网站是有防护系统的，例如安居客和58就会轻易的办掉你的ip，往往得不偿失，而且重型扫描器也可能会对网站造成危害，慎用。<br>推荐的话用BBscan这种轻量级的扫描器去扫，重点放在路径的扫描，比如说有没有403、404的站点，爆破API接口端点、路径⼀些的。</p>
+<h3 id="常⽤⼯具"><a href="#常⽤⼯具" class="headerlink" title="常⽤⼯具"></a>常⽤⼯具</h3><p>两个工具：<br>第⼀：BURPSUITE<br>第⼆： Fiddler</p>
+<h3 id="入手点"><a href="#入手点" class="headerlink" title="入手点"></a>入手点</h3><p>上来对提交的⼀些表单（例如：意见反馈、文件上传等）要特别敏感，还有就是⼀些功能点（例如：付款的⾦额校验、修改密码的sign值替换等），进来多找功能点的进行测试，不要对着html⼀直有想法，新手入门可以多在意⼀些数值溢出，以及接口的利用，还要注意文件上传这些点。<br>新手阶段很多都是从逻辑漏洞开始的，可以尝试⼀些并发的逻辑漏洞，每个网站都或多或少会存在⼀些的。<br>各个模块都有相对应的靶场（例如sql注⼊有sqli这样⼀些漏洞靶场进⾏训练）可以对自己进行漏洞利用的锻炼，不断提高经验，这⾥推荐 owasp虚拟机靶场，虚拟机中集成各种靶场，</p>
+<h3 id="提升危害"><a href="#提升危害" class="headerlink" title="提升危害"></a>提升危害</h3><p>如果不是众测挖到漏洞后不建议直接提交，而是思考如何才能扩大战果，比如挖到XSS后，思考能不能拿到cookie？如果不能退⼀步可以不以找⼀个csrf将漏洞变成XSRF以此照成蠕虫？在测试机器通过弱口令进去后能不能Getshell，拿到shell后进行审计⼜是十几个高危。在对只有登录框界面进行测试时⼀定要多注意子目录以及接口。IP打开后403、404不要忽略，先扫目录，扫完了在说，往往高危会存在与许多低微的并发利用。</p>
+<h2 id="第三步-漏洞报告"><a href="#第三步-漏洞报告" class="headerlink" title="第三步 漏洞报告"></a>第三步 漏洞报告</h2><p>报告不是直接把漏洞贴上去就行，需要讲你是怎样发现这个资产、测试过程中遇<br>到的问题、解决这些问题用了哪些方法、能够造成什么影响？尽可能的精简，从你是审核的⻆度去看待你提交的报告</p>
+<h1 id="JS相关"><a href="#JS相关" class="headerlink" title="JS相关"></a>JS相关</h1><h3 id="JS在漏洞挖掘中的重要地位"><a href="#JS在漏洞挖掘中的重要地位" class="headerlink" title="JS在漏洞挖掘中的重要地位"></a>JS在漏洞挖掘中的重要地位</h3><p>在实战的漏洞挖掘中阅读JS有以下几个作用:<br>1、JS中存在插件名字，根据插件找到相应的漏洞直接利用<br>2、JS中存在一些URL链接，根据URL链接找到相应的页面进一步测试和利用<br>    如可以使用Jsfind Js中泄露的url链接和域名<br>3、JS中存在一个子域名，可以直接访问子域名<br>4、JS中的一些注释可能泄露以账号密码或者其他的</p>
+<h3 id="浏览器控制台使用技巧和方式"><a href="#浏览器控制台使用技巧和方式" class="headerlink" title="浏览器控制台使用技巧和方式"></a>浏览器控制台使用技巧和方式</h3><p>网络是对整个网络请求发起的一个监控，可以监控流量<br>右键检查 网络 禁用缓存打个勾</p>
+<p>调试器主要是对JS代码进行动态调试并且保存加载的JS代码<br>网站的js源代码可以通过控制台调用js函数名</p>
+<h4 id="JS断点技巧和Hook注入"><a href="#JS断点技巧和Hook注入" class="headerlink" title="JS断点技巧和Hook注入"></a>JS断点技巧和Hook注入</h4><p>随便打开一个后台管理系统的界面，输入账号密码，F12-&gt;网络-&gt;post请求-&gt;查看请求，可以看到密码变成一大段字符串，是通过Js传到服务器的。如何破解？<br>先找加密方法，在js源代码中搜索password<br><img src="/../img/0125191615.png"><br>找到加密处理对应位置后，打一个断点（鼠标单击）<br>再次输入账号密码登录，运行到这步就会暂停，<br><img src="/../img/125193242.png"><br>可以单步步入、步出</p>
+<h3 id="JS加密参数逆向以及利用"><a href="#JS加密参数逆向以及利用" class="headerlink" title="JS加密参数逆向以及利用"></a>JS加密参数逆向以及利用</h3><h4 id="python和JS结合解决加密难题"><a href="#python和JS结合解决加密难题" class="headerlink" title="python和JS结合解决加密难题"></a>python和JS结合解决加密难题</h4><p><img src="/../img/0125195916.png"><br>无论js的加密方法多复杂，不用理解复杂的加密过程，直接用pytho调用运行，就知道加密出来的内容是什么了。</p>
+<h4 id="实战MD5加密逆向加密参数还原"><a href="#实战MD5加密逆向加密参数还原" class="headerlink" title="实战MD5加密逆向加密参数还原"></a>实战MD5加密逆向加密参数还原</h4><p>破解密码<br>打开bp，输入账号密码，拦截<br>找对password加密的js代码<br><img src="/../img/25201105.png"><br>找第一层md5的js函数，复制出来<br><img src="/../img/0125201229.png"><br>找md51函数，也复制到这里，还有hex函数，也复制到这里，同时将函数中用药的函数都找出来复制到这里。</p>
+<p><img src="/../img/10125201328.png"><br>通过运行这个python代码可以获取到加密后的值</p>
+<p>完成前面第一层md5，外面几层类似的，其中使用random函数的时候，可以用网页的控制台调用<br><img src="/../img/125202307.png"><br>最终，算出来的值和bp抓到的一样</p>
+<p>把爆破字典转成这样的东西，就可以进行爆破解密</p>
 
       
 
@@ -321,7 +263,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">文献悦读</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">漏洞挖掘</a>
         		</li>
       		
 		</ul>
@@ -377,7 +319,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://laneyyu.github.io/2023/11/08/AURC/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://laneyyu.github.io/2024/01/25/SRC1/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -391,18 +333,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2024/01/24/Intelligent_Fuzzy_Attack_Vector_Generation_Framework/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2024/01/25/GANs/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Intelligent Fuzzy Attack Vector Generation Framework Based on Deep Adversarial Learning
+          GANs笔记
         
       </div>
     </a>
   
   
-    <a href="/2023/10/30/CSAPP-Malloc/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">CSAPP_Malloc</div>
+    <a href="/2024/01/24/Intelligent_Fuzzy_Attack_Vector_Generation_Framework/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Intelligent Fuzzy Attack Vector Generation Framework Based on Deep Adversarial Learning</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -429,7 +371,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.</span> <span class="toc-text">设计</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A1%86%E6%9E%B6"><span class="toc-number">1.1.</span> <span class="toc-text">框架</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A2%AB%E8%B0%83%E7%94%A8%E6%96%B9%E5%88%86%E6%9E%90"><span class="toc-number">1.2.</span> <span class="toc-text">被调用方分析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E8%80%85%E5%88%86%E6%9E%90"><span class="toc-number">1.3.</span> <span class="toc-text">调用者分析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E5%88%86%E6%9E%90"><span class="toc-number">1.4.</span> <span class="toc-text">文档分析</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%BA%E9%99%B7%E6%A3%80%E6%B5%8B"><span class="toc-number">2.</span> <span class="toc-text">缺陷检测</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%A1%E7%8C%AE"><span class="toc-number"></span> <span class="toc-text">贡献</span></a>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSRC"><span class="toc-number">1.</span> <span class="toc-text">什么是SRC</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.</span> <span class="toc-text">主要步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-number">2.1.</span> <span class="toc-text">第一步 信息收集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5-%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98"><span class="toc-number">2.2.</span> <span class="toc-text">第二步 漏洞挖掘</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F%E5%99%A8"><span class="toc-number">2.2.1.</span> <span class="toc-text">漏洞扫描器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E2%BD%A4%E2%BC%AF%E5%85%B7"><span class="toc-number">2.2.2.</span> <span class="toc-text">常⽤⼯具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A5%E6%89%8B%E7%82%B9"><span class="toc-number">2.2.3.</span> <span class="toc-text">入手点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E5%8D%87%E5%8D%B1%E5%AE%B3"><span class="toc-number">2.2.4.</span> <span class="toc-text">提升危害</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5-%E6%BC%8F%E6%B4%9E%E6%8A%A5%E5%91%8A"><span class="toc-number">2.3.</span> <span class="toc-text">第三步 漏洞报告</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JS%E7%9B%B8%E5%85%B3"><span class="toc-number">3.</span> <span class="toc-text">JS相关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JS%E5%9C%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%9C%B0%E4%BD%8D"><span class="toc-number">3.0.1.</span> <span class="toc-text">JS在漏洞挖掘中的重要地位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E5%92%8C%E6%96%B9%E5%BC%8F"><span class="toc-number">3.0.2.</span> <span class="toc-text">浏览器控制台使用技巧和方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JS%E6%96%AD%E7%82%B9%E6%8A%80%E5%B7%A7%E5%92%8CHook%E6%B3%A8%E5%85%A5"><span class="toc-number">3.0.2.1.</span> <span class="toc-text">JS断点技巧和Hook注入</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS%E5%8A%A0%E5%AF%86%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91%E4%BB%A5%E5%8F%8A%E5%88%A9%E7%94%A8"><span class="toc-number">3.0.3.</span> <span class="toc-text">JS加密参数逆向以及利用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#python%E5%92%8CJS%E7%BB%93%E5%90%88%E8%A7%A3%E5%86%B3%E5%8A%A0%E5%AF%86%E9%9A%BE%E9%A2%98"><span class="toc-number">3.0.3.1.</span> <span class="toc-text">python和JS结合解决加密难题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E6%88%98MD5%E5%8A%A0%E5%AF%86%E9%80%86%E5%90%91%E5%8A%A0%E5%AF%86%E5%8F%82%E6%95%B0%E8%BF%98%E5%8E%9F"><span class="toc-number">3.0.3.2.</span> <span class="toc-text">实战MD5加密逆向加密参数还原</span></a></li></ol></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
