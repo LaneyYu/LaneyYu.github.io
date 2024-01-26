@@ -16,7 +16,7 @@
 <meta property="og:description" content="Authors: Zhicheng Hu、 Jianqi Shi、YanHong Huang、Jiawen Xiong、Xiangxing Bu CF ‘18: Proceedings of the 15th ACM International Conference on Computing Frontiers May 2018Pages 138–145https:&#x2F;&#x2F;doi.org&#x2F;10.11">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-01-26T13:17:49.000Z">
-<meta property="article:modified_time" content="2024-01-26T13:33:34.325Z">
+<meta property="article:modified_time" content="2024-01-26T13:53:17.139Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Laney" type="application/atom+xml">
@@ -192,7 +192,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text" style="font-size: 14px;color: grey">  字数统计:</span>
         <!--这里样式可以自己定制-->
-        <span class="post-count" style="font-size: 14px;color: grey">1k字</span>
+        <span class="post-count" style="font-size: 14px;color: grey">1.2k字</span>
       </span>
     </span>
 
@@ -201,7 +201,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text" style="font-size: 14px;color: grey">  阅读时长:</span>
-        <span class="post-count" style="font-size: 14px;color: grey">3分钟</span>
+        <span class="post-count" style="font-size: 14px;color: grey">4分钟</span>
       </span>
     </span>
 </div>
@@ -224,9 +224,15 @@
       
         <p> Authors: Zhicheng Hu、 Jianqi Shi、YanHong Huang、Jiawen Xiong、Xiangxing Bu<br> CF ‘18: Proceedings of the 15th ACM International Conference on Computing Frontiers May 2018Pages 138–145<a target="_blank" rel="noopener" href="https://doi.org/10.1145/3203217.3203241">https://doi.org/10.1145/3203217.3203241</a><br>Published:08 May 2018</p>
 <span id="more"></span>
-<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>问题：</p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">工业控制系统（ICS）：是石油石化工业、电力系统、核电站等关键基础设施正常运行的必要设施。</span><br><span class="line">工业网络协议（INPs）：用于工业控制系统和设备之间进行通信和数据交换的协议</span><br></pre></td></tr></table></figure>
+
+<p>问题：</p>
 <ol>
-<li>工控协议重要，缺乏安全设计，需要通过漏挖加强其安全</li>
+<li>工业控制协议重要，缺乏安全设计，需要通过漏挖加强其安全<ul>
+<li>为了提供实时、抗干扰和可控的通信，大多INP的协议格式被设计为短帧和未加密，对话易被拦截、利用</li>
+<li>开发人员在实现 INP 时，可能无法正确处理协议细节，例如边界值、字段之间的相互关系等，因为解释规范是繁琐且容易出错的任务</li>
+</ul>
+</li>
 <li>协议fuzz，协议语法通过人工读取和分析协议规范来建立的，费时费力</li>
 </ol>
 <p>方法：</p>
