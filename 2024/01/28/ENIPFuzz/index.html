@@ -6,14 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://laneyyu.github.io">
-  <title>Archives: 2024/1 | Laney</title>
+  <title>ENIPFuzz | Laney</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Laney">
-<meta property="og:url" content="https://laneyyu.github.io/archives/2024/01/index.html">
+  <meta name="description" content="论文：《ENIPFuzz: A SeqGAN-based EtherNet&#x2F;IP Protocol Fuzzing Test Framework》">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ENIPFuzz">
+<meta property="og:url" content="https://laneyyu.github.io/2024/01/28/ENIPFuzz/index.html">
 <meta property="og:site_name" content="Laney">
+<meta property="og:description" content="论文：《ENIPFuzz: A SeqGAN-based EtherNet&#x2F;IP Protocol Fuzzing Test Framework》">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://laneyyu.github.io/img/40128215923.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/Pa240128220815.png">
+<meta property="article:published_time" content="2024-01-28T14:14:27.000Z">
+<meta property="article:modified_time" content="2024-01-28T14:15:23.977Z">
+<meta property="article:tag" content="文献悦读">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://laneyyu.github.io/img/40128215923.png">
   
     <link rel="alternative" href="/atom.xml" title="Laney" type="application/atom+xml">
   
@@ -162,36 +170,110 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-ENIPFuzz" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      ENIPFuzz
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2024" class="archive-year">2024</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/01/28/ENIPFuzz/" class="archive-article-date">
+
+        
+        <a href="/2024/01/28/ENIPFuzz/" class="archive-article-date">
   	<time datetime="2024-01-28T14:14:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-28</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/01/28/ENIPFuzz/">ENIPFuzz</a>
-    </h1>
+        
+
+         <!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  字数统计:</span>
+        <!--这里样式可以自己定制-->
+        <span class="post-count" style="font-size: 14px;color: grey">1.5k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  阅读时长:</span>
+        <span class="post-count" style="font-size: 14px;color: grey">5分钟</span>
+      </span>
+    </span>
+</div>
+
+          
+        <!-- 添加完成 -->
+
   
 
-        <div class="article-info info-on-right">
-          
+        <!-- 
+          <span class="archive-article-date">
+              阅读量：<span id="busuanzi_value_page_pv">
+          </span>
+         -->
+        
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>论文：《ENIPFuzz: A SeqGAN-based EtherNet&#x2F;IP Protocol Fuzzing Test Framework》<span id="more"></span><br>作者：<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37086558350">Honggang Wu</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37089452366">Li Gong</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37088766174">Ao Liu</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37087410723">Yi Zhang</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37089453172">Jianwei Yang</a><br><strong>Published in:</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/9823394/proceeding">2022 IEEE 5th International Conference on Electronics Technology (ICET)</a><br>DOI:<a target="_blank" rel="noopener" href="https://doi.org/10.1109/ICET55676.2022.9824256">10.1109&#x2F;ICET55676.2022.9824256</a></p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p><strong>问题</strong>：</p>
+<ul>
+<li>提高工业控制系统（ICS）的安全性至关重要</li>
+<li>传统的模糊测试方法在挖掘新漏洞方面存在一些局限性。<ul>
+<li>测试用例完全依赖人工设计，费时费力，质量完全取决于先验知识;测试用例的代码覆盖率和通过率差异很大</li>
+</ul>
+</li>
+<li>大多数测试用例是基于公共漏洞数据库构建的，该数据库在挖掘新漏洞方面存在一些局限性。此外，公共漏洞数据库中很少有 EtherNet&#x2F;IP 协议漏洞</li>
+<li>现有的模糊器和模糊化框架，只有一个商业模糊器支持EtherNet&#x2F;IP协议。</li>
+</ul>
+<p><strong>贡献：</strong></p>
+<ul>
+<li>提出了一种基于SeqGAN的EtherNet&#x2F;IP协议模糊测试框架（ENIPFuzz），减少协议分析的人力劳动，实现了高效、智能的模糊测试。方案不依赖于现有的漏洞数据库。</li>
+<li>提出了三种聚类策略来构建训练集，增加生成的测试用例的多样性，可充分测试EtherNet&#x2F;IP协议的鲁棒性。据我们所知，本文首次尝试将基于深度学习的模糊测试应用于 EtherNet&#x2F;IP 协议。</li>
+</ul>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="主要步骤"><a href="#主要步骤" class="headerlink" title="主要步骤"></a>主要步骤</h3><ul>
+<li>收集数据包，并通过不同的聚类策略将它们预处理到不同的训练数据集中。</li>
+<li>将在不同的训练数据集上训练SeqGAN生成模型。</li>
+<li>使用生成模型生成格式良好的 ENIP 帧。</li>
+<li>我们将生成的 ENIP 帧发送到目标程序并监控异常响应。</li>
+</ul>
+<p>从以下阶段展示 ENIPFuzz：</p>
+<p>1)ENIP报文预处理：从工控系统捕获的原始EtherNet&#x2F;IP报文不能直接用于训练对抗网络。</p>
+<ul>
+<li>首先，从原始的ENIP数据包中提取十六进制协议数据，然后将其逐位转换为十进制。</li>
+<li>其次，利用所提出的3种聚类策略，从不同角度构建训练数据集;</li>
+</ul>
+<p>2)对抗训练：训练一个基于SeqGAN框架的生成模型，以生成虚假数据作为模糊测试用例，该数据与真实世界数据的数据格式相同，但内容不同。</p>
+<p>3)测试用例生成和模糊测试：首先使用经过训练的生成器生成测试用例。然后，构建发送到测试目标程序的ENIP数据包，并记录异常响应，以发现测试目标程序的漏洞。</p>
+<h3 id="ENIP数据包预处理"><a href="#ENIP数据包预处理" class="headerlink" title="ENIP数据包预处理"></a>ENIP数据包预处理</h3><p>通过以下策略构建了训练数据集</p>
+<p><strong>SameLengthClustering</strong>：根据不同的帧长度，将转换后的十进制数据收集到不同的训练集中。为了在训练深度学习模型中不被忽视，使用数<strong>据增强策略</strong>来增加这些少量数据帧在训练集中的比例。这种聚类策略简洁而高效，对于许多工业网络协议来说，相同或相似类型的帧具有相同的消息长度，有利于生成具有更高通过率的测试用例。</p>
+<p><strong>SameCommandClustering</strong>：由于EtherNet&#x2F;IP协议具有固定数量的功能代码，本研究创新性地提出了根据函数代码构建训练集的聚类策略。通过将具有相同命令的帧收集到同一组中，可以训练生成器生成相同的命令测试用例。不包括 EtherNet&#x2F;IP 协议的保留字段，它有 8 个功能代码，如表 II 所示。然后填充不同的训练集，填充策略如下：<br><img src="/../img/40128215923.png"><br>其中S0是原始数据，S1是填充数据，len（）表示测量数据长度的函数，M axLen表示当前训练集中消息的最大长度，x表示填充字符，x&#x3D;‘P AD’：</p>
+<ul>
+<li>如果len（S0）&#x3D;M axLen，则表示不需要填充原始数据。将S0保留在训练集中。</li>
+<li>如果len（S0）＜M axLen，则表示需要填充原始数据。填充长度为n&#x3D;M axLen−len（S0），从训练集中移除原始数据S0，并将填充的数据S1添加到训练集中<br>与HybridClustering策略相比，可以充分测试EtherNet&#x2F;IP协议各功能的鲁棒性</li>
+</ul>
+<p><strong>HybridClustering</strong>：为了充分利用模糊测试的随机性，将所有帧数据作为训练数据集，可以使生成的测试用例具有更高的覆盖率。虽然这个策略有缺陷，但仍然值得实施。与上述两种策略相比，该策略可以训练模型生成更多样化的测试用例。</p>
+<h3 id="对抗性训练"><a href="#对抗性训练" class="headerlink" title="对抗性训练"></a>对抗性训练</h3><p>如图1所示，基于SeqGAN的ENIPFuzz框架模型包括一个生成器（G）和一个鉴别器（D）。在具有图像生成功能的普通GAN模型中，梯度通过从D到G的反向传播来更新。然而，离散文本数据无法区分，因此梯度不能从D反向传播到G。 与普通GAN不同，SeqGAN利用强化学习技术和策略梯度算法来更新G的权重，而不是直接从D反向传播到G，避免了不可微分的问题。</p>
+<p>生成器用于处理输入的随机噪声（Z）并生成文本序列。判别器判断输入样本是真实世界的数据还是生成的序列，然后将判断概率作为奖励提供给 G，以引导 G 的梯度更新，如图 1 所示。“xx……x“表示生成的数据，”yy…y“表示真实世界的数据，”RR…R“表示判别器将生成的数据视为真实数据的可能性的概率值。迭代上述步骤，直到 G 能够生成与真实序列相似的文本序列。<br><img src="/../img/Pa240128220815.png"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -203,160 +285,119 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://laneyyu.github.io/2024/01/28/ENIPFuzz/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/01/26/GANFuzz/" class="archive-article-date">
-  	<time datetime="2024-01-26T13:17:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-26</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2024/01/26/GANFuzz/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">GANFuzz:a GAN-based industrial network protocol fuzzing framework</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/01/26/GANFuzz/">GANFuzz:a GAN-based industrial network protocol fuzzing framework</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">2.1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.1.1.</span> <span class="toc-text">主要步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ENIP%E6%95%B0%E6%8D%AE%E5%8C%85%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-number">2.1.2.</span> <span class="toc-text">ENIP数据包预处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E6%8A%97%E6%80%A7%E8%AE%AD%E7%BB%83"><span class="toc-number">2.1.3.</span> <span class="toc-text">对抗性训练</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/01/25/GANs/" class="archive-article-date">
-  	<time datetime="2024-01-25T13:49:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-25</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/01/25/GANs/">GANs笔记</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">GAN</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/01/25/SRC1/" class="archive-article-date">
-  	<time datetime="2024-01-25T13:45:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/01/25/SRC1/">SRC漏洞挖掘笔记</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">漏洞挖掘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/01/24/Intelligent_Fuzzy_Attack_Vector_Generation_Framework/" class="archive-article-date">
-  	<time datetime="2024-01-24T12:25:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/01/24/Intelligent_Fuzzy_Attack_Vector_Generation_Framework/">Intelligent Fuzzy Attack Vector Generation Framework Based on Deep Adversarial Learning</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">文献悦读</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -391,8 +432,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
