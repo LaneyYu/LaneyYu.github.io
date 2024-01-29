@@ -17,8 +17,16 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://laneyyu.github.io/img/40128215923.png">
 <meta property="og:image" content="https://laneyyu.github.io/img/Pa240128220815.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/P240129213247.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/Paste13304.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/P0129214749.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/P129214312.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/240129215452.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/0129215645.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/P240129215823.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/P40129220256.png">
 <meta property="article:published_time" content="2024-01-28T14:14:27.000Z">
-<meta property="article:modified_time" content="2024-01-28T14:15:23.977Z">
+<meta property="article:modified_time" content="2024-01-29T14:09:39.523Z">
 <meta property="article:tag" content="文献悦读">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://laneyyu.github.io/img/40128215923.png">
@@ -196,7 +204,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text" style="font-size: 14px;color: grey">  字数统计:</span>
         <!--这里样式可以自己定制-->
-        <span class="post-count" style="font-size: 14px;color: grey">1.5k字</span>
+        <span class="post-count" style="font-size: 14px;color: grey">3.1k字</span>
       </span>
     </span>
 
@@ -205,7 +213,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text" style="font-size: 14px;color: grey">  阅读时长:</span>
-        <span class="post-count" style="font-size: 14px;color: grey">5分钟</span>
+        <span class="post-count" style="font-size: 14px;color: grey">11分钟</span>
       </span>
     </span>
 </div>
@@ -265,7 +273,35 @@
 </ul>
 <p><strong>HybridClustering</strong>：为了充分利用模糊测试的随机性，将所有帧数据作为训练数据集，可以使生成的测试用例具有更高的覆盖率。虽然这个策略有缺陷，但仍然值得实施。与上述两种策略相比，该策略可以训练模型生成更多样化的测试用例。</p>
 <h3 id="对抗性训练"><a href="#对抗性训练" class="headerlink" title="对抗性训练"></a>对抗性训练</h3><p>如图1所示，基于SeqGAN的ENIPFuzz框架模型包括一个生成器（G）和一个鉴别器（D）。在具有图像生成功能的普通GAN模型中，梯度通过从D到G的反向传播来更新。然而，离散文本数据无法区分，因此梯度不能从D反向传播到G。 与普通GAN不同，SeqGAN利用强化学习技术和策略梯度算法来更新G的权重，而不是直接从D反向传播到G，避免了不可微分的问题。</p>
-<p>生成器用于处理输入的随机噪声（Z）并生成文本序列。判别器判断输入样本是真实世界的数据还是生成的序列，然后将判断概率作为奖励提供给 G，以引导 G 的梯度更新，如图 1 所示。“xx……x“表示生成的数据，”yy…y“表示真实世界的数据，”RR…R“表示判别器将生成的数据视为真实数据的可能性的概率值。迭代上述步骤，直到 G 能够生成与真实序列相似的文本序列。<br><img src="/../img/Pa240128220815.png"></p>
+<p>生成器用于处理输入的随机噪声（Z）并生成文本序列。判别器判断输入样本是真实世界的数据还是生成的序列，然后将判断概率作为奖励提供给 G，以引导 G 的梯度更新，如图 1 所示。“xx……x“表示生成的数据，”yy…y“表示真实世界的数据，”RR…R“表示判别器将生成的数据视为真实数据的可能性的概率值。迭代上述步骤，直到 G 能够生成与真实序列相似的文本序列。<br><img src="/../img/Pa240128220815.png"><br>ENIPFuzz框架利用LSTM模型作为生成模型。映射前一时刻的隐藏状态帽子 c，将当前时刻的单词向量 x，将当前时刻的隐藏状态帽子 c 的形式形式如下：<br><img src="/../img/P240129213247.png"><br>然后将计算出的隐藏状态 hto 输出字的概率分布映射：<br><img src="/../img/Paste13304.png"></p>
+<p>其中V 是权重矩阵，b 是偏置向量。<br>同时，使用CNN作为判别模型。CNN模型依次包括嵌入层、卷积层、最大池化层和sigmoid层。在训练集中，原始协议数据为正样本，生成数据为负样本。给定一个协议数据 X，将其视为序列向量 X &#x3D; （x， x· · · x）。所有序列向量都由矩阵 X 组成，也称为序列集 x∈ V，其中 V 是序列集的字符集。然后利用卷积层对序列向量进行卷积，提取序列特征。最后，序列特征依次通过max池化层和全连接sigmoid层，得到输入序列为实序列的概率。</p>
+<p>总之，我们可以通过采用上述SeqGAN框架来生成尽可能类似于协议数据的数据。LSTM模型和CNN模型的细节（层数和单元数）应根据协议结构的复杂程度来确定，例如协议消息的长度，协议消息越长，模型越复杂。</p>
+<p>模型训练三个步骤：<br>1）生成器预训练：真实协议消息X1:T作为生成器模型的输入，学习其特征。在预处理数据包中填写后，训练协议消息在数据集中的长度是相等的。<br>2）判别器预训练：使用预训练生成器来生成一些负样本，这些样本的标签为 0，表示这些数据是假的。真实协议消息是阳性样本并标记为 1。然后以正样本和负样本为输入，预训练判别器以区分假数据和真实数据。<br>3）交替训练：预训练后，训练生成器和判别器交替，动态调整学习速率，直到生成器可以生成类似于真实协议消息的序列。</p>
+<h3 id="测试用例生成和模糊测试"><a href="#测试用例生成和模糊测试" class="headerlink" title="测试用例生成和模糊测试"></a>测试用例生成和模糊测试</h3><p>为了平衡测试用例的通过率和随机性，保存了不同时期（例如，5、10、15 个时期）的生成器模型。不同时期的生成器模型对协议语法的学习程度不同，允许我们生成不同相似度的测试用例，可以很好地保持测试用例的多样性和随机性。</p>
+<p>到目前为止，已经获得了不同程度上覆盖协议语法的生成器模型，以及每种聚类策略。随后，我们将测试用例发送到目标程序，记录异常或错误响应，并捕获导致目标程序异常的 ENIP 数据包。在此模糊测试期间，使用PING命令来监控工业控制系统的运行状态。</p>
+<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><p>在 EtherNet&#x2F;IP 协议上重新实现了基于 WGAN 的模型</p>
+<h2 id="实际的-EtherNet-IP-数据包预处理"><a href="#实际的-EtherNet-IP-数据包预处理" class="headerlink" title="实际的 EtherNet&#x2F;IP 数据包预处理"></a>实际的 EtherNet&#x2F;IP 数据包预处理</h2><ul>
+<li>使用 wireshark从真实的工业控制系统捕获 EtherNet&#x2F;IP 协议消息。</li>
+<li>通过 TCP&#x2F;IP 传输时的 EtherNet&#x2F;IP 帧 （ENIP） 格式如图所示。</li>
+<li>捕获 49,165 个数据包，32,652 个是 ENIP 数据包，包括 8 种命令类型。但某些类型非常少，必须在数据包预处理时增加这些数据的比例。</li>
+<li>最后，训练数据集共有 24,000 条数据，每个函数代码有 3,000 条。<br><img src="/../img/P0129214749.png"></li>
+</ul>
+<h2 id="评价"><a href="#评价" class="headerlink" title="评价"></a>评价</h2><p>给出了生成模型在训练中不同学习率下损失值的变化，如图所示。损失值随着训练周期的增加而逐渐减小。该方案的评估指标与文献《An intelligent fuzzing data generation method based on deep adversarial learning》相同：<br><img src="/../img/P129214312.png"></p>
+<ul>
+<li>测试输入接受率 （TIAR）：TIAR 表示测试目标程序接受的测试用例的百分比。</li>
+<li>生成数据的多样性 （DGD）：DGD 表示生成模型保持生成数据多样性的能力。</li>
+<li>漏洞检测能力（AVD）：AVD表示生成模型发现测试目标程序漏洞的能力。</li>
+</ul>
+<p><strong>测试输入接受率（TIAR）</strong>：在ENIP封装标头中，包含一个4字节的“状态”，用于存储执行命令的目标程序返回的状态代码。仅当状态为0x0000时，表示ENIP数据包合法且命令执行成功。记录异常执行的数据包并计数接受率如图4a所示。与基于WGAN的方法相比，基于SeqGAN的方法可以实现更高的TIAR，具有更高的消息格式学习能力。<br><img src="/../img/240129215452.png">统计了三种训练数据集聚类策略的接受率，如图4b所示。为了演示生成的测试用例的详细信息，我们向目标程序发送了 30,000 个案例，并计算了目标程序不接受输入测试用例的案例数及其原因，如表 III 所示。<br><img src="/../img/0129215645.png"></p>
+<p><strong>生成数据的多样性（DGD）</strong>：随着训练周期的增加，我们的方案仍然保持着 8 种类型的案例。但基于WGAN的模型不能保持原始数据集中的多样性。因此基于SeqGAN的方法在训练数据量较小时具有更大的优势。<br><img src="/../img/P240129215823.png"><strong>漏洞检测能力（AVD）</strong>：将基于SeqGAN的模型生成的30000个案例发送到Micro820 PLC。攻击过程中，发现PLC的指示灯异常闪烁，之后程序与PLC之间的通信中断，即使重新启动PLC也无法恢复。确定它是由PLC程序崩溃引起的。<br>如表IV所示，给出了基于SeqGAN的方法和基于WGAN的方法在CPU和GPU下的30个训练时期的训练时间。<br><img src="/../img/P40129220256.png"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>提出了一种基于SeqGAN的EtherNet&#x2F;IP协议模糊测试框架（ENIPFuzz）。</li>
+<li>引入Seq-GAN，减少协议分析的人力劳动，实现高效智能的模糊测试，不依赖于现有的漏洞数据库。</li>
+<li>提出了三种聚类策略来构建训练集，可以充分测试EtherNet&#x2F;IP协议的鲁棒性。</li>
+<li>据我们所知，本文首次尝试将基于深度学习的模糊测试应用于 EtherNet&#x2F;IP 协议。</li>
+<li>对于未来的工作，计划使用 ENIPFuzz 框架来探索真实工业控制系统的漏洞。</li>
+<li>此外，将使用提出的框架测试其他更工业化的控制协议，例如 DNP3、Profibus、IEC</li>
+</ul>
 
       
 
@@ -378,7 +414,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">2.1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.1.1.</span> <span class="toc-text">主要步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ENIP%E6%95%B0%E6%8D%AE%E5%8C%85%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-number">2.1.2.</span> <span class="toc-text">ENIP数据包预处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E6%8A%97%E6%80%A7%E8%AE%AD%E7%BB%83"><span class="toc-number">2.1.3.</span> <span class="toc-text">对抗性训练</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">2.1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.1.1.</span> <span class="toc-text">主要步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ENIP%E6%95%B0%E6%8D%AE%E5%8C%85%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-number">2.1.2.</span> <span class="toc-text">ENIP数据包预处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E6%8A%97%E6%80%A7%E8%AE%AD%E7%BB%83"><span class="toc-number">2.1.3.</span> <span class="toc-text">对抗性训练</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E7%94%9F%E6%88%90%E5%92%8C%E6%A8%A1%E7%B3%8A%E6%B5%8B%E8%AF%95"><span class="toc-number">2.1.4.</span> <span class="toc-text">测试用例生成和模糊测试</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C"><span class="toc-number">3.</span> <span class="toc-text">实验</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E7%9A%84-EtherNet-IP-%E6%95%B0%E6%8D%AE%E5%8C%85%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-number">3.1.</span> <span class="toc-text">实际的 EtherNet&#x2F;IP 数据包预处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%84%E4%BB%B7"><span class="toc-number">3.2.</span> <span class="toc-text">评价</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
                     </div>
                 </span>
             </div>
