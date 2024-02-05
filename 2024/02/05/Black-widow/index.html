@@ -6,13 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://laneyyu.github.io">
-  <title>Laney</title>
+  <title>Black-widow | Laney</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Laney">
-<meta property="og:url" content="https://laneyyu.github.io/index.html">
+  <meta name="description" content="论文：Black Widow: Blackbox Data-driven Web Scanning作者：Benjamin Eriksson; Giancarlo Pellegrino; Andrei Sabelfeld">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Black-widow">
+<meta property="og:url" content="https://laneyyu.github.io/2024/02/05/Black-widow/index.html">
 <meta property="og:site_name" content="Laney">
+<meta property="og:description" content="论文：Black Widow: Blackbox Data-driven Web Scanning作者：Benjamin Eriksson; Giancarlo Pellegrino; Andrei Sabelfeld">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-05T14:26:37.000Z">
+<meta property="article:modified_time" content="2024-02-05T14:27:17.030Z">
+<meta property="article:tag" content="文献悦读">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Laney" type="application/atom+xml">
@@ -162,16 +167,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-Black-widow" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Black-widow" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/02/05/Black-widow/">Black-widow</a>
+    <h1 class="article-title" itemprop="name">
+      Black-widow
     </h1>
   
 
@@ -209,17 +212,66 @@
 
   
 
-        <!--  -->
+        <!-- 
+          <span class="archive-article-date">
+              阅读量：<span id="busuanzi_value_page_pv">
+          </span>
+         -->
         
 
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>论文：Black Widow: Blackbox Data-driven Web Scanning<br>作者：<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37088948506">Benjamin Eriksson</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37086421979">Giancarlo Pellegrino</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37282298100">Andrei Sabelfeld</a>
-        
-          <a class="article-more-a" href="/2024/02/05/Black-widow/#more">more >></a>
-        
+        <p>论文：Black Widow: Blackbox Data-driven Web Scanning<br>作者：<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37088948506">Benjamin Eriksson</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37086421979">Giancarlo Pellegrino</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37282298100">Andrei Sabelfeld</a> <span id="more"></span><br><strong>Published in:</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/9519381/proceeding">2021 IEEE Symposium on Security and Privacy (SP)</a><strong>DOI:</strong> <a target="_blank" rel="noopener" href="https://doi.org/10.1109/SP40001.2021.00022">10.1109&#x2F;SP40001.2021.00022</a></p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>问题：</p>
+<ul>
+<li>Web 应用程序的信任度越来越高，对安全性的需求也在增加。</li>
+<li>由于复杂性、动态性和对第三方组件的依赖，检测 Web 应用程序中的漏洞变得越来越困难。</li>
+</ul>
+<p>黑盒漏洞扫描尤其具有<strong>挑战性</strong></p>
+<ul>
+<li>为了深入渗透 Web 应用程序，扫描程序需要执行用户交互和异步等浏览行为</li>
+<li>为了检测非平凡的注入攻击，例如存储的跨站点脚本 （XSS），扫描程序需要发现页面间数据依赖关系。</li>
+</ul>
+<p>主要设计了一种数据驱动的WEB应用黑盒扫描方法。作者认为，当前在WEB扫描方面的<strong>三大支柱</strong>分别为导航图建模、遍历和内状态依赖关系追踪。作者同时利用这三种技术，大幅提高了黑盒扫描器的代码覆盖率。</p>
+<p><strong>挑战</strong>：</p>
+<ul>
+<li>在过去十年中，研究界提出了不同的方法来增加 Web 应用程序攻击面的覆盖范围。</li>
+<li>由于 JavaScript 使网页变得动态且更加复杂，因此提出了新的想法来整合这些动态行为，以确保正确探索页面行为和异步 HTTP 请求 。</li>
+<li>其他方法提出了通过逆向工程（LigRE和KameleonFuzz）或推断状态来解决服务器端程序复杂性的方法（Enemy of the State ）来解决服务器端程序的复杂性，然后使用学习到的模型来驱动爬虫。</li>
+</ul>
+<p>但现有方法无法提供足够的攻击面覆盖范围。为了应对这一挑战，我们从两个观察开始。</p>
+<ul>
+<li>首先，虽然先前的工作为个别挑战提供了解决方案，但利用它们精心设计的<strong>组合</strong>有可能提高现代 Web 应用程序扫描的最新技术水平。</li>
+<li>其次，现有的解决方案主要侧重于处理 Web 应用程序的控制流，而<strong>没有考虑到控制流和数据流之间相互交织的依赖关系</strong>。例如，考虑用于添加新用户的页面与用于显示现有用户的页面之间的依赖关系，其中前者会更改后者的状态。能够提取和使用这种页面间依赖关系将允许扫描程序探索新行为并检测更复杂的 XSS 漏洞。</li>
+</ul>
+<h3 id="贡献："><a href="#贡献：" class="headerlink" title="贡献："></a>贡献：</h3><ul>
+<li>确定了现代 Web 应用程序中扫描仪未解决的挑战</li>
+<li>介绍了使用内状态依赖关系分析和抓取复杂工作流程来查找 XSS 漏洞的新方法。</li>
+<li>实现并共享源代码</li>
+<li>对 10 个流行的 Web 应用程序与 7 个 Web 应用程序扫描器上的工具进行了比较评估。</li>
+<li>介绍了评估，发现了 25 个漏洞，其中 6 个以前在 HotCRP、osCommerce、PrestaShop 和 WordPress 中是未知的。此外，与其他扫描程序相比，发现较旧的应用程序中存在更多漏洞。还将代码覆盖率平均提高了 23%。</li>
+<li>分析了结果并解释了Web扫描仪所需的重要功能。</li>
+</ul>
+<h1 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h1><p>现有的Web应用程序扫描器存在许多缺点，影响了它们应对现代Web应用程序复杂性的能力。<br>最先进的扫描仪专注于不同的挑战，以提高其有效性。如，jÄk 专注于 JavaScript 事件，Enemy of the State 专注于应用程序状态，LigRE 专注于逆向工程，CrawlJAX 专注于网络请求。<br>然而，要成功扫描应用程序，得同时解决这些挑战。本节重点介绍这些缺点，并提取实现高代码覆盖率和有效漏洞检测的主要挑战。</p>
+<p>高代码覆盖率对于查找任何类型的漏洞都至关重要。对于漏洞检测专注于存储的 XSS，因为已知它难以检测，现有扫描程序 覆盖不佳。在这里，服务器在以后的服务器操作中存储和使用不受信任的输入，而不对输入进行适当的验证或对输出进行清理。</p>
+<p>检测存储 XSS 等细微漏洞的 Web 应用程序扫描程序面临三大挑战：</p>
+<ul>
+<li>扫描器对形成 Web 应用程序的各状态、状态之间的连接和依赖关系建模。</li>
+<li>识别这些依赖关系要扫描程序能够遍历应用程序中的复杂工作流。</li>
+<li>扫描程序要跟踪 Web 应用程序状态之间的细微依赖关系</li>
+</ul>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>针对作者提出的WEB扫描器三大支柱技术，目前最先进的扫描器们往往侧重于其中的某个单项。因此，作者同时利用这三项技术，从而提高黑盒扫描器的代码覆盖率。由作者给出的伪代码来看，单独任何一项技术都不是非常复杂，但是结合到一起却能够大幅提高扫描器性能。</p>
+<ol>
+<li><p>导航图建模<br> 该文所描述的导航图为以客户端状态为节点，动作为边的有向图。与以页面为节点的表示方法相比，这种表示方法能更细粒度地表示使用WEB应用时的实际情况：通过一系列动作，改变应用状态。其中客户端状态具体包括页面状态、URL状态、JS脚本状态；动作具体包括GET请求、表单提交、内联框架和JS事件。为了构建这一导航图，在遍历站点的过程中，扫描器会通过在页面运行前注入监控JS代码（jAk scanner提供）的方式来记录页面触发的JS事件以及DOM的改变。另一方面，为了降低导航图复杂度，避免出现过多相似节点和循环扫描等情况，该扫描器将具有相同URL页面定义为相似页面，并规定了相似页面数量的最大值。此外，为了方便回溯路径，导航图的每个边都用其前一个边进行标记（指向前向边的指针）。</p>
+</li>
+<li><p>遍历<br> 该文使用广度优先遍历法对站点进行遍历。针对整个遍历过程，作者重点介绍了当其扫描器遇到需要先执行特定操作序列的情况时（个人认为是在广度优先搜索时，有些动作会改变状态，破坏特定操作序列的条件，所以在推进深度时需要适当回溯节点），如何避免每次都从头节点开始沿着边执行动作序列，以提高遍历性能。作者首先定义GET请求的边是安全的，不会影响后续动作（并不绝对，为了性能妥协）。当遇到需要先执行特定操作序列的边时，则对其通过前指针进行前向遍历，直到找到第一个安全的边。由于每个导航图的首个边都是GET请求（视为安全），所以必有解。</p>
+</li>
+<li><p>内状态依赖关系追踪<br> 该文在扫描站点时，使用端到端的污点跟踪方法将用户输入与应用的状态关联起来。具体来讲，该扫描器遇到网站可控输入时，随机输入一个含有8个小写字母的字符串，并在其他节点页面寻找该字符串以关联用户输入与应用状态。这一功能能对漏洞扫描提供帮助，作者也在实验部分针对XSS漏洞进行测试。个人认为，相较于一般的漏扫，结合用户输入与应用状态关系发现的漏洞能够在较高程度上确保攻击者构造的Payload能通过一条行之有效的路径到达漏洞点，以降低漏洞误报率。</p>
+</li>
+</ol>
+
       
 
       
@@ -243,218 +295,73 @@
       
 
       
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
         
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-webFuzz" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/02/01/webFuzz/">webFuzz Grey-Box Fuzzing for Web Applications</a>
-    </h1>
-  
-
-        
-        <a href="/2024/02/01/webFuzz/" class="archive-article-date">
-  	<time datetime="2024-02-01T14:23:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-02-01</time>
-</a>
-        
-
-         <!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  字数统计:</span>
-        <!--这里样式可以自己定制-->
-        <span class="post-count" style="font-size: 14px;color: grey">10.6k字</span>
-      </span>
+      </div>
     </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  阅读时长:</span>
-        <span class="post-count" style="font-size: 14px;color: grey">37分钟</span>
-      </span>
-    </span>
+  </div>
 </div>
 
-          
-        <!-- 添加完成 -->
-
-  
-
-        <!--  -->
-        
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>论文：webFuzz: Grey-Box Fuzzing for Web Applications<br>作者：Orpheas van Rooij<a target="_blank" rel="noopener" href="https://dl.acm.org/profile/99660160318"></a>、Marcos Antonios Charalambous<a target="_blank" rel="noopener" href="https://dl.acm.org/profile/99660112864"></a>、Demetris Kaizer<a target="_blank" rel="noopener" href="https://dl.acm.org/profile/99660104519"></a>、Michalis Papaevripides<a target="_blank" rel="noopener" href="https://dl.acm.org/profile/99659666211"></a>、Elias Athanasopoulos<a target="_blank" rel="noopener" href="https://dl.acm.org/profile/81384597430"></a>
-        
-          <a class="article-more-a" href="/2024/02/01/webFuzz/#more">more >></a>
-        
-      
-
-      
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://laneyyu.github.io/2024/02/05/Black-widow/" alt="微信分享二维码">
     </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">文献悦读</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-upload-lab" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/01/31/upload-lab/">文件上传靶场练习题</a>
-    </h1>
-  
-
-        
-        <a href="/2024/01/31/upload-lab/" class="archive-article-date">
-  	<time datetime="2024-01-31T11:57:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-31</time>
-</a>
-        
-
-         <!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  字数统计:</span>
-        <!--这里样式可以自己定制-->
-        <span class="post-count" style="font-size: 14px;color: grey">5.5k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  阅读时长:</span>
-        <span class="post-count" style="font-size: 14px;color: grey">26分钟</span>
-      </span>
-    </span>
 </div>
 
-          
-        <!-- 添加完成 -->
-
-  
-
-        <!--  -->
-        
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>upload-labs是一个专门用于学习文件上传漏洞攻击和防御的靶场。它提供了一系列模拟文件上传漏洞的实验环境，用于帮助用户了解文件上传漏洞的原理和防御技术。
-        
-          <a class="article-more-a" href="/2024/01/31/upload-lab/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">文件上传</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2024/02/01/webFuzz/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">webFuzz Grey-Box Fuzzing for Web Applications</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -469,734 +376,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-review-on-fuzzing-for-protocols" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/01/30/review-on-fuzzing-for-protocols/">Review on Fuzz Testing for Protocols</a>
-    </h1>
-  
-
-        
-        <a href="/2024/01/30/review-on-fuzzing-for-protocols/" class="archive-article-date">
-  	<time datetime="2024-01-30T13:55:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-30</time>
-</a>
-        
-
-         <!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  字数统计:</span>
-        <!--这里样式可以自己定制-->
-        <span class="post-count" style="font-size: 14px;color: grey">3.8k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  阅读时长:</span>
-        <span class="post-count" style="font-size: 14px;color: grey">13分钟</span>
-      </span>
-    </span>
-</div>
-
-          
-        <!-- 添加完成 -->
-
-  
-
-        <!--  -->
-        
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Review-on-Fuzz-Testing-for-Protocols-in-Industrial-Control-Systems"><a href="#Review-on-Fuzz-Testing-for-Protocols-in-Industrial-Control-Systems" class="headerlink" title="Review on Fuzz Testing for Protocols in Industrial Control Systems"></a>Review on Fuzz Testing for Protocols in Industrial Control Systems</h1><p>作者：<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37089358573">Huiying Lan</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37086701434">Yanbin Sun</a></p>
-        
-          <a class="article-more-a" href="/2024/01/30/review-on-fuzzing-for-protocols/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">文献悦读</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%A1%E7%8C%AE%EF%BC%9A"><span class="toc-number">1.0.1.</span> <span class="toc-text">贡献：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8C%91%E6%88%98"><span class="toc-number">2.</span> <span class="toc-text">挑战</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-number">2.0.1.</span> <span class="toc-text">方法</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
   
-    <article id="post-ENIPFuzz" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/01/28/ENIPFuzz/">ENIPFuzz:A SeqGAN-based EtherNet/IP Protocol Fuzzing Test Framework</a>
-    </h1>
   
-
-        
-        <a href="/2024/01/28/ENIPFuzz/" class="archive-article-date">
-  	<time datetime="2024-01-28T14:14:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-28</time>
-</a>
-        
-
-         <!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  字数统计:</span>
-        <!--这里样式可以自己定制-->
-        <span class="post-count" style="font-size: 14px;color: grey">3.1k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  阅读时长:</span>
-        <span class="post-count" style="font-size: 14px;color: grey">11分钟</span>
-      </span>
-    </span>
-</div>
-
-          
-        <!-- 添加完成 -->
 
   
 
-        <!--  -->
-        
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>论文：《ENIPFuzz: A SeqGAN-based EtherNet&#x2F;IP Protocol Fuzzing Test Framework》
-        
-          <a class="article-more-a" href="/2024/01/28/ENIPFuzz/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">文献悦读</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-GANFuzz" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/01/26/GANFuzz/">GANFuzz:a GAN-based industrial network protocol fuzzing framework</a>
-    </h1>
   
 
-        
-        <a href="/2024/01/26/GANFuzz/" class="archive-article-date">
-  	<time datetime="2024-01-26T13:17:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-26</time>
-</a>
-        
-
-         <!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  字数统计:</span>
-        <!--这里样式可以自己定制-->
-        <span class="post-count" style="font-size: 14px;color: grey">5.9k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  阅读时长:</span>
-        <span class="post-count" style="font-size: 14px;color: grey">20分钟</span>
-      </span>
-    </span>
-</div>
-
-          
-        <!-- 添加完成 -->
-
-  
-
-        <!--  -->
-        
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p> Authors: Zhicheng Hu、 Jianqi Shi、YanHong Huang、Jiawen Xiong、Xiangxing Bu<br> CF ‘18: Proceedings of the 15th ACM International Conference on Computing Frontiers May 2018Pages 138–145<br> <a target="_blank" rel="noopener" href="https://doi.org/10.1145/3203217.3203241">https://doi.org/10.1145/3203217.3203241</a><br>Published:08 May 2018</p>
-        
-          <a class="article-more-a" href="/2024/01/26/GANFuzz/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-GANs" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/01/25/GANs/">GANs笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2024/01/25/GANs/" class="archive-article-date">
-  	<time datetime="2024-01-25T13:49:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-25</time>
-</a>
-        
-
-         <!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  字数统计:</span>
-        <!--这里样式可以自己定制-->
-        <span class="post-count" style="font-size: 14px;color: grey">840字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  阅读时长:</span>
-        <span class="post-count" style="font-size: 14px;color: grey">2分钟</span>
-      </span>
-    </span>
-</div>
-
-          
-        <!-- 添加完成 -->
-
-  
-
-        <!--  -->
-        
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>生成对抗网络（Generative Adversarial Networks,GANs）是一种深度学习的框架，用于生成与训练数据集相匹配的新样本。它由两部分组成：生成器和判别器。
-        
-          <a class="article-more-a" href="/2024/01/25/GANs/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">GAN</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SRC1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/01/25/SRC1/">SRC漏洞挖掘笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2024/01/25/SRC1/" class="archive-article-date">
-  	<time datetime="2024-01-25T13:45:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-25</time>
-</a>
-        
-
-         <!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  字数统计:</span>
-        <!--这里样式可以自己定制-->
-        <span class="post-count" style="font-size: 14px;color: grey">2.2k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  阅读时长:</span>
-        <span class="post-count" style="font-size: 14px;color: grey">7分钟</span>
-      </span>
-    </span>
-</div>
-
-          
-        <!-- 添加完成 -->
-
-  
-
-        <!--  -->
-        
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="什么是SRC"><a href="#什么是SRC" class="headerlink" title="什么是SRC"></a>什么是SRC</h1><p>Security Response Center 安全应急响应中心
-        
-          <a class="article-more-a" href="/2024/01/25/SRC1/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">漏洞挖掘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Intelligent_Fuzzy_Attack_Vector_Generation_Framework" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/01/24/Intelligent_Fuzzy_Attack_Vector_Generation_Framework/">Intelligent Fuzzy Attack Vector Generation Framework Based on Deep Adversarial Learning</a>
-    </h1>
-  
-
-        
-        <a href="/2024/01/24/Intelligent_Fuzzy_Attack_Vector_Generation_Framework/" class="archive-article-date">
-  	<time datetime="2024-01-24T12:25:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-24</time>
-</a>
-        
-
-         <!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  字数统计:</span>
-        <!--这里样式可以自己定制-->
-        <span class="post-count" style="font-size: 14px;color: grey">3.9k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  阅读时长:</span>
-        <span class="post-count" style="font-size: 14px;color: grey">13分钟</span>
-      </span>
-    </span>
-</div>
-
-          
-        <!-- 添加完成 -->
-
-  
-
-        <!--  -->
-        
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>论文：《基于深度对抗学习的智能模糊攻击向量生成框架》<br>
-        
-          <a class="article-more-a" href="/2024/01/24/Intelligent_Fuzzy_Attack_Vector_Generation_Framework/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">文献悦读</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-AURC" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/11/08/AURC/">AURC:Detecting Errors in Program Code and Documentation</a>
-    </h1>
-  
-
-        
-        <a href="/2023/11/08/AURC/" class="archive-article-date">
-  	<time datetime="2023-11-08T13:55:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-08</time>
-</a>
-        
-
-         <!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  字数统计:</span>
-        <!--这里样式可以自己定制-->
-        <span class="post-count" style="font-size: 14px;color: grey">2.3k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text" style="font-size: 14px;color: grey">  阅读时长:</span>
-        <span class="post-count" style="font-size: 14px;color: grey">8分钟</span>
-      </span>
-    </span>
-</div>
-
-          
-        <!-- 添加完成 -->
-
-  
-
-        <!--  -->
-        
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>《AURC：检测程序代码和文档中的错误》<br>
-        
-          <a class="article-more-a" href="/2023/11/08/AURC/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">文献悦读</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -1231,8 +436,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
