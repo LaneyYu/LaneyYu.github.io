@@ -15,18 +15,18 @@
 <meta property="og:site_name" content="Laney">
 <meta property="og:description" content="论文：Black Widow: Blackbox Data-driven Web Scanning作者：Benjamin Eriksson; Giancarlo Pellegrino; Andrei Sabelfeld">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://laneyyu.github.io/P0206161906.png">
-<meta property="og:image" content="https://laneyyu.github.io/240206173841.png">
-<meta property="og:image" content="https://laneyyu.github.io/0240206173854.png">
-<meta property="og:image" content="https://laneyyu.github.io/206173906.png">
-<meta property="og:image" content="https://laneyyu.github.io/40206221528.png">
-<meta property="og:image" content="https://laneyyu.github.io/Pa40206221639.png">
-<meta property="og:image" content="https://laneyyu.github.io/Paste653.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/P0206161906.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/240206173841.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/0240206173854.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/206173906.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/40206221528.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/Pa40206221639.png">
+<meta property="og:image" content="https://laneyyu.github.io/img/Paste653.png">
 <meta property="article:published_time" content="2024-02-05T14:26:37.000Z">
-<meta property="article:modified_time" content="2024-02-06T14:31:41.166Z">
+<meta property="article:modified_time" content="2024-02-06T15:31:59.805Z">
 <meta property="article:tag" content="文献悦读">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://laneyyu.github.io/P0206161906.png">
+<meta name="twitter:image" content="https://laneyyu.github.io/img/P0206161906.png">
   
     <link rel="alternative" href="/atom.xml" title="Laney" type="application/atom+xml">
   
@@ -270,7 +270,7 @@
 <li>识别这些依赖关系要扫描程序能够遍历应用程序中的复杂工作流。</li>
 <li>扫描程序要跟踪 Web 应用程序状态之间的细微依赖关系</li>
 </ul>
-<h2 id="导航建模"><a href="#导航建模" class="headerlink" title="导航建模"></a>导航建模</h2><p>模拟扫描器与服务器端和客户端代码的交互是复杂且具有挑战性的。<br><img src="/P0206161906.png"><br>Web 应用程序示例，其中任何人都可以查看用户列表，管理员可以添加新用户。红色虚线表示状态间依赖关系。绿线是 HTML5，橙色表示 JavaScript。边缘之间的蓝色虚线将由我们的扫描仪添加以跟踪其路径。序列号显示了查找状态间依赖关系的必要顺序。</p>
+<h2 id="导航建模"><a href="#导航建模" class="headerlink" title="导航建模"></a>导航建模</h2><p>模拟扫描器与服务器端和客户端代码的交互是复杂且具有挑战性的。<br><img src="/../img/P0206161906.png"><br>Web 应用程序示例，其中任何人都可以查看用户列表，管理员可以添加新用户。红色虚线表示状态间依赖关系。绿线是 HTML5，橙色表示 JavaScript。边缘之间的蓝色虚线将由我们的扫描仪添加以跟踪其路径。序列号显示了查找状态间依赖关系的必要顺序。</p>
 <p>考虑图1中示例Web应用程序中的流程。扫描器必须能够对链接、表单、事件以及它们之间的交互建模。此外，为了实现工作流遍历，它还必须对应用程序中经过的路径进行建模。最后，模型必须支持如图中虚线所示的状态间依赖关系。</p>
 <p>目前的最新技术包括不同的导航建模方法。Enemy of the State使用状态机和有向图来推断服务器端状态。然而，导航模型缺乏关于客户端事件的信息。相比之下，j ¨Ak 使用了一个图形结构来表示JavaScript事件。CrawlJAX将重点转向了对JavaScript网络请求的建模。尽管这两种方法都对客户端进行了建模，但它们忽略了其他重要的导航方法，比如表单提交。</p>
 <p>模型必须涵盖与应用程序进行交互的多种方法：GET和POST请求、JavaScript事件、HTML表单和iframes。此外，模型还应该能够适应依赖关系。</p>
@@ -287,15 +287,14 @@
 <p>为了检测表单数据的输入字段是否容易受到跨站点脚本（XSS）等攻击，扫描程序需要以admin.php#users的形式注入有效负载，然后到达view_users.php以验证注入是否成功。但现有的 Web 扫描器并不知道这些状态间的依赖关系，并且在注入有效负载后，它们几乎无法识别反映注入的页面以及是否反映了注入。</p>
 <h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>针对作者提出的WEB扫描器三大支柱技术，目前最先进的扫描器们往往侧重于其中的某个单项。因此，作者同时利用这三项技术，从而提高黑盒扫描器的代码覆盖率。由作者给出的伪代码来看，单独任何一项技术都不是非常复杂，但是结合到一起却能够大幅提高扫描器性能。</p>
 <ol>
-<li>导航图建模<br> 该文所描述的导航图为以客户端状态为节点，动作为边的有向图。与以页面为节点的表示方法相比，这种表示方法能更细粒度地表示使用WEB应用时的实际情况：通过一系列动作，改变应用状态。其中客户端状态具体包括页面状态、URL状态、JS脚本状态；动作具体包括GET请求、表单提交、内联框架和JS事件。为了构建这一导航图，在遍历站点的过程中，扫描器会通过在页面运行前注入监控JS代码（jAk scanner提供）的方式来记录页面触发的JS事件以及DOM的改变。另一方面，为了降低导航图复杂度，避免出现过多相似节点和循环扫描等情况，该扫描器将具有相同URL页面定义为相似页面，并规定了相似页面数量的最大值。此外，为了方便回溯路径，导航图的每个边都用其前一个边进行标记（指向前向边的指针）。<br> <img src="/240206173841.png"></li>
-<li>遍历<br> 该文使用广度优先遍历法对站点进行遍历。针对整个遍历过程，作者重点介绍了当其扫描器遇到需要先执行特定操作序列的情况时（个人认为是在广度优先搜索时，有些动作会改变状态，破坏特定操作序列的条件，所以在推进深度时需要适当回溯节点），如何避免每次都从头节点开始沿着边执行动作序列，以提高遍历性能。作者首先定义GET请求的边是安全的，不会影响后续动作（并不绝对，为了性能妥协）。当遇到需要先执行特定操作序列的边时，则对其通过前指针进行前向遍历，直到找到第一个安全的边。由于每个导航图的首个边都是GET请求（视为安全），所以必有解。<br> <img src="/0240206173854.png"></li>
-<li>内状态依赖关系追踪<br> 该文在扫描站点时，使用端到端的污点跟踪方法将用户输入与应用的状态关联起来。具体来讲，该扫描器遇到网站可控输入时，随机输入一个含有8个小写字母的字符串，并在其他节点页面寻找该字符串以关联用户输入与应用状态。这一功能能对漏洞扫描提供帮助，作者也在实验部分针对XSS漏洞进行测试。个人认为，相较于一般的漏扫，结合用户输入与应用状态关系发现的漏洞能够在较高程度上确保攻击者构造的Payload能通过一条行之有效的路径到达漏洞点，以降低漏洞误报率。<br> <img src="/206173906.png"></li>
+<li>导航图建模<br> 该文所描述的导航图为以客户端状态为节点，动作为边的有向图。与以页面为节点的表示方法相比，这种表示方法能更细粒度地表示使用WEB应用时的实际情况：通过一系列动作，改变应用状态。其中客户端状态具体包括页面状态、URL状态、JS脚本状态；动作具体包括GET请求、表单提交、内联框架和JS事件。为了构建这一导航图，在遍历站点的过程中，扫描器会通过在页面运行前注入监控JS代码（jAk scanner提供）的方式来记录页面触发的JS事件以及DOM的改变。另一方面，为了降低导航图复杂度，避免出现过多相似节点和循环扫描等情况，该扫描器将具有相同URL页面定义为相似页面，并规定了相似页面数量的最大值。此外，为了方便回溯路径，导航图的每个边都用其前一个边进行标记（指向前向边的指针）。<br> <img src="/../img/240206173841.png"></li>
+<li>遍历<br> 该文使用广度优先遍历法对站点进行遍历。针对整个遍历过程，作者重点介绍了当其扫描器遇到需要先执行特定操作序列的情况时（个人认为是在广度优先搜索时，有些动作会改变状态，破坏特定操作序列的条件，所以在推进深度时需要适当回溯节点），如何避免每次都从头节点开始沿着边执行动作序列，以提高遍历性能。作者首先定义GET请求的边是安全的，不会影响后续动作（并不绝对，为了性能妥协）。当遇到需要先执行特定操作序列的边时，则对其通过前指针进行前向遍历，直到找到第一个安全的边。由于每个导航图的首个边都是GET请求（视为安全），所以必有解。<br> <img src="/../img/0240206173854.png"></li>
+<li>内状态依赖关系追踪<br> 该文在扫描站点时，使用端到端的污点跟踪方法将用户输入与应用的状态关联起来。具体来讲，该扫描器遇到网站可控输入时，随机输入一个含有8个小写字母的字符串，并在其他节点页面寻找该字符串以关联用户输入与应用状态。这一功能能对漏洞扫描提供帮助，作者也在实验部分针对XSS漏洞进行测试。个人认为，相较于一般的漏扫，结合用户输入与应用状态关系发现的漏洞能够在较高程度上确保攻击者构造的Payload能通过一条行之有效的路径到达漏洞点，以降低漏洞误报率。<br> <img src="/../img/206173906.png"></li>
 </ol>
-<h1 id="实验与评估"><a href="#实验与评估" class="headerlink" title="实验与评估"></a>实验与评估</h1><p>作者在实验部分主要横向对比了几个WEB扫描器针对数个热门WEB应用的代码覆盖情况。作者定义的代码覆盖为在扫描会话中，执行的代码行数。通过使用Xdebug模块，记录每次请求服务器端调用代码的具体情况，从中统计执行代码的内容与数量，从而分析扫描器们的代码覆盖情况。其结果如下图所示，图中数据分别为Black Widow覆盖而其他扫描器未覆盖的，Black Widow和其他扫描器都覆盖的和Black Widow未覆盖而其他扫描器覆盖了的。<br><img src="/40206221528.png"><br>可以看到，Black Widow对于代码覆盖的提高达到63%至280%。另外，针对XSS漏洞的挖掘过程中，Black Widow针对漏洞利用路径的构建优于其他扫描器。<br><img src="/Pa40206221639.png"><br><img src="/Paste653.png"></p>
-<h1 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h1><p>一个普遍的概念是，扫描仪的问题不在于确切的有效payload，而在于爬虫足够深以找到注入，以及对应用程序进行建模以找到反射。与我们的研究结果类似，Parvez等指出，虽然一些扫描仪能够对WackoPicko中的图片发表评论，这需要按顺序进行多个操作，但它们都无法注入有效载荷。</p>
-<p>现在，我们将讨论解决服务器端状态、客户端状态和跟踪数据依赖关系的工作。</p>
+<h1 id="实验与评估"><a href="#实验与评估" class="headerlink" title="实验与评估"></a>实验与评估</h1><p>作者在实验部分主要横向对比了几个WEB扫描器针对数个热门WEB应用的代码覆盖情况。作者定义的代码覆盖为在扫描会话中，执行的代码行数。通过使用Xdebug模块，记录每次请求服务器端调用代码的具体情况，从中统计执行代码的内容与数量，从而分析扫描器们的代码覆盖情况。其结果如下图所示，图中数据分别为Black Widow覆盖而其他扫描器未覆盖的，Black Widow和其他扫描器都覆盖的和Black Widow未覆盖而其他扫描器覆盖了的。<br><img src="/../img/40206221528.png"><br>可以看到，Black Widow对于代码覆盖的提高达到63%至280%。另外，针对XSS漏洞的挖掘过程中，Black Widow针对漏洞利用路径的构建优于其他扫描器。<br><img src="/../img/Pa40206221639.png"><br><img src="/../img/Paste653.png"></p>
+<h1 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h1><p>对于扫描器而言，问题并不在于确切的恶意有效载荷，而是在于深入遍历以找到注入点，并对应用程序进行建模以找到反射点。与我们的研究结果相似，Parvez等人指出，虽然一些扫描器能够在WackoPicko中对图片进行评论，这需要多个连续的操作，但它们都无法成功注入有效载荷。”<br>讨论解决服务器端状态、客户端状态和跟踪数据依赖关系的工作。</p>
 <p>服务器端状态：Enemy of the State  专注于通过使用启发式方法来推断服务器的状态，以比较请求如何在页面上产生不同的链接。相反，Black widow采用分析导航方法的方法来推断一些状态信息。例如，如果导航图中的上一条边是表单提交，则我们必须重新提交此表单，然后才能继续。这使我们能够在不完全推断服务器端状态的情况下执行一系列操作。</p>
-<p>许多其他扫描程序很少关注服务器端状态的一个原因是优先考虑并发请求的性能。Skipfish  值得一提的是，它在每秒请求数方面的高性能。他们用于实现此目的的一种方法是发出并发请求。并发请求在无状态环境中非常有用，因为这些请求不会相互干扰。ZAP 、w3af 和 Arachni 采用与 Skipfish 相同的方法，使用并发请求来支持更好的状态控制。由于我们的遍历方法依赖于执行一系列可能更改状态的操作，因此我们需要确保不会同时发送其他更改状态的请求。因此，我们的方法仅执行串行操作。</p>
+<p>许多其他扫描程序很少关注服务器端状态的一个原因是优先考虑并发请求的性能。Skipfish  在每秒请求数方面是高性能。他们用于实现此目的的一种方法是发出并发请求。并发请求在无状态环境中非常有用，因为这些请求不会相互干扰。ZAP 、w3af 和 Arachni 采用与 Skipfish 相同的方法，使用并发请求来支持更好的状态控制。由于我们的遍历方法依赖于执行一系列可能更改状态的操作，因此我们需要确保不会同时发送其他更改状态的请求。因此，我们的方法仅执行串行操作。</p>
 <p>客户端状态：jÄk 考虑客户端事件以改进探索。但是，对事件的支持是有限的，省略了表单提交等事件。虽然其他扫描程序（如 Enemy of the State、w3af 和 ZAP）执行 JavaScript，但它们不会对事件进行建模。这限制了他们探索客户端状态的能力。随着现代应用程序大量使用 JavaScript，Black Widow 提供了对客户端事件的全面支持。与 jÄk 相比，Black Widow 像任何其他导航方法一样对客户端事件进行建模。这意味着我们不必以任何特定顺序执行事件，这使我们能够将它们与其他导航（例如表单提交）链接。</p>
 <p>跟踪数据依赖关系：跟踪有效负载是检测存储的 XSS 漏洞的重要部分。一些扫描程序（包括 Arachni）在每个有效负载中使用基于会话的 ID。由于 ID 基于会话，这可能会导致误报，因为有效负载被重用于不同的参数。jÄk 和 Enemy of the State 为其有效载荷使用唯一 ID，但在新页面上忘记了它们。W3AF 使用独特的有效负载，并跨页面记住它们。ZAP 使用一种组合，其中唯一 ID 与通用有效负载一起发送，但在单独的请求中发送。如果 ID 和有效负载都存储在页面上，则此操作有效。除了对所有有效负载使用唯一 ID 外，Black Widow 还在应用程序中合并了状态依赖关系，以确保我们可以模糊不同页面的正确输入和输出。</p>
 <p>LigRE 及其后继者 KameleonFuzz 使用黑盒方法对应用程序进行逆向工程，并应用遗传算法来修改有效payload。虽然它们也使用有效负载内部的污点来跟踪它们，但我们使用明文令牌来避免过滤器破坏污点。虽然 Black Widow 在实时应用程序上工作，但 KameleonFuzz 需要能够重置应用程序。但LigRE 和 KameleonFuzz 都不是开源的，这阻碍了实验评估。</p>
